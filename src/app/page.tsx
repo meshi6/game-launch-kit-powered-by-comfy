@@ -501,6 +501,11 @@ function KitWall({ kit, onZoom }: { kit: ReturnType<typeof useKit>; onZoom: (c: 
             </>
           )}
         </Crt>
+        {video.url && (
+          <a href={video.url} target="_blank" rel="noreferrer" download className="pill hud mt-3 inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-lg">
+            <span className="text-brand">⇩</span> Save video (.mp4)
+          </a>
+        )}
       </Shelf>
 
       {/* store assets */}

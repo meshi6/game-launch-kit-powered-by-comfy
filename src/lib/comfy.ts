@@ -68,8 +68,10 @@ export async function asJpeg(buf: Buffer, maxWidth = 2048, quality = 86) {
   return sharp(buf).resize({ width: maxWidth, withoutEnlargement: true }).jpeg({ quality, mozjpeg: true }).toBuffer();
 }
 
-export async function asPng(buf: Buffer, maxWidth = 1600) {
-  return sharp(buf).resize({ width: maxWidth, withoutEnlargement: true }).png({ compressionLevel: 9 }).toBuffer();
+export async function asPng(buf: Buffer, maxWidth = 1600, trim = false) {
+  // trim() strips the empty transparent border around a cut-out (cuts a 2.4 MB logo to a fraction)
+  const trimmed = trim ? await sharp(buf).trim({ threshold: 10 }).toBuffer().catch(() => buf) : buf;
+  return sharp(trimmed).resize({ width: maxWidth, withoutEnlargement: true }).png({ compressionLevel: 9 }).toBuffer();
 }
 
 /** Ask Claude for text; optionally pass images as data URLs. */

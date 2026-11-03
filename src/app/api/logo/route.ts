@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     const cut = await runJson<BriaOut>(MODELS.removeBg, { image: url, preserve_alpha: true });
     if (!cut.result?.image_url) throw new Error(cut.error?.message ?? "Background removal failed");
 
-    const png = await asPng(await fetchBuffer(cut.result.image_url), 1600);
+    const png = await asPng(await fetchBuffer(cut.result.image_url), 1400, true);
     return Response.json({ logo: toDataUrl(png, "image/png") });
   } catch (err) {
     return errorResponse(err);
