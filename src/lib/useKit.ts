@@ -227,9 +227,9 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
       if (alive()) setCapsules(out);
       if (thumb) {
         sleep(1200).then(() => alive() && setLegible({
-          score: 8,
+          score: 6,
           readable: true,
-          tip: "Large, high-contrast lettering survives the 120×45 search size. A slightly darker outline on the ampersand would make it pop more.",
+          tip: "The icy blue title blends into the similarly toned snowy background and the letters are blurry. Add a dark outline or drop shadow, or put a darker gradient behind the text, and increase the letter contrast.",
           thumb: thumb.small,
         }));
       }

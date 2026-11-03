@@ -12,8 +12,9 @@ type Screen = "store" | "insert" | "kit";
 
 // The kit bundled in /public/demo (generated live during testing).
 const DEMO_GAME = {
-  name: "Moss & Mortar",
-  pitch: "A cozy co-op castle-builder where frogs defend their pond kingdom from seasonal storms.",
+  name: "Frostbound",
+  pitch: "An open-world fantasy RPG where a dragon-blooded exile roams frozen northern kingdoms relearning forgotten rune magic.",
+  aisle: "rpg",
 };
 
 export default function Home() {
@@ -43,6 +44,7 @@ export default function Home() {
     // ?demo=1: stage-safe mode. Press Start replays a pre-generated kit (no API calls).
     if (new URLSearchParams(location.search).get("demo") === "1") {
       setDemo(true);
+      setGenre(GENRES.find((g) => g.id === DEMO_GAME.aisle) ?? GENRES[0]);
       setName(DEMO_GAME.name);
       setPitch(DEMO_GAME.pitch);
       // &play=1 starts the replay right away (kiosk screen at the booth)
