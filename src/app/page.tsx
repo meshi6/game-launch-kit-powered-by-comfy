@@ -270,7 +270,7 @@ function StoreFloor({ genre, onPick, onStart }: { genre: Genre; onPick: (g: Genr
         </p>
         <h1 className="chroma font-display text-[2.1rem] leading-[0.95] font-extrabold tracking-tight">Choose your style.</h1>
         <p className="mx-auto mt-2 max-w-[19rem] text-sm leading-snug text-white/75">
-          Get your logo, trailer, art and every Steam size in minutes. No design skills needed.
+          Get your logo, trailer, 3D hero, art and every Steam size in minutes. No design skills needed.
         </p>
       </div>
 
