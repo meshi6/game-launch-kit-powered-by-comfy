@@ -246,6 +246,9 @@ function StoreFloor({ genre, onPick, onStart }: { genre: Genre; onPick: (g: Genr
       <div className="px-4 pt-3 text-center">
         <p className="hud text-lg text-muted">Welcome to the store</p>
         <h1 className="chroma font-display text-[2.1rem] leading-[0.95] font-extrabold tracking-tight">Pick an aisle.</h1>
+        <p className="mx-auto mt-2 max-w-[19rem] text-sm leading-snug text-white/75">
+          Made a game but can&apos;t design a store page? Get your logo, art and every Steam size in 2 minutes. No design skills needed.
+        </p>
       </div>
 
       {/* curved wall of TVs */}
@@ -388,7 +391,7 @@ function Insert(p: {
         <button disabled={!ready} className="hud w-full rounded-2xl bg-brand py-4 text-3xl text-black shadow-[0_0_50px_-8px_var(--brand)] transition active:scale-[0.98] disabled:opacity-30 disabled:shadow-none">
           Press start ▸
         </button>
-        <p className="hud text-center text-base text-muted">8 models · ~2 min · 1 Comfy key</p>
+        <p className="hud text-center text-base text-muted">No design skills needed · ready in ~2 min</p>
       </form>
     </main>
   );
