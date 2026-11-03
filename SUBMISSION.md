@@ -20,7 +20,7 @@ The store page is the first thing a player sees, and small versions of the art d
 
 ## What you get
 
-One sentence in, a ready-to-upload storefront out, downloaded as one zip sorted by platform. Our test run of *Iron Front* (a military shooter) finished every step, with the title scoring 8/10 on the tiny-thumbnail check ([see the full run, screen by screen](https://github.com/meshi6/game-launch-kit-powered-by-comfy/blob/main/docs/example-run/README.md)).
+A few taps in, a ready-to-upload storefront out, downloaded as one zip sorted by platform. Our test run of *Iron Front* (a military shooter) finished every step, with the title scoring 8/10 on the tiny-thumbnail check ([see the full run, screen by screen](https://github.com/meshi6/game-launch-kit-powered-by-comfy/blob/main/docs/example-run/README.md)).
 
 | You get | Why a non-designer needs it |
 | --- | --- |
@@ -58,7 +58,7 @@ The Comfy API key stays on the server; a short access code protects the public d
 Start the live run in the first seconds so it builds while you talk. Keep the demo tab open as a backup: it looks identical and replays a finished kit in about 20 seconds with no API calls.
 
 1. **0–10 s, the problem.** "You finished your game. Now Steam wants ten pieces of art at exact sizes, a logo, an icon and store copy. If you're not a designer, that's where games stall."
-2. **10–20 s, start it.** Swipe the TVs to an aisle, show the pre-filled game, press **Start**. "One sentence. No prompts, no design tools."
+2. **10–20 s, start it.** Swipe the TVs to an aisle, show the pre-filled game, press **Start**. "A few taps. No prompts, no design tools."
 3. **20–45 s, watch it fill.** Point at the loading bar and the TVs switching on. "One art direction goes to seven Comfy models, so everything matches." Play a sound button. Show the tiny-thumbnail score.
 4. **45–55 s, the payoff.** Scroll the store shelf, open one capsule full-screen, play the title sting.
 5. **55–60 s, close.** Tap **Download**. "Ready to upload. Built for the people who can make a game but can't design a store page."

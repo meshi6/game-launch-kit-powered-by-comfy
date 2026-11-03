@@ -4,7 +4,7 @@
 
 # Example run: *Iron Front*
 
-**One sentence in, a full storefront out, on a phone.**<br>
+**A few taps in, a full storefront out, on a phone.**<br>
 Recorded live on the deployed app, November 2, 2026. Nothing below was edited.
 
 | ⏱ Start → stage clear | 🖼 Store images | 🎨 UI icons | 🔊 Sounds | 🎬 Video | 🔎 Tiny-size test |
