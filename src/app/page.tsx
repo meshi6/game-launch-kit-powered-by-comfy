@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Channel, Crt, Static } from "@/components/Crt";
 import { ModelViewer } from "@/components/ModelViewer";
+import { MicButton } from "@/components/Mic";
 import { GENRES, type Genre } from "@/lib/genres";
 import { blip, setMuted } from "@/lib/blips";
 import { shrinkUpload, svgToDataUrl, type Composed } from "@/lib/compose";
@@ -374,7 +375,10 @@ function Insert(p: {
       </div>
 
       <form className="mt-6 space-y-4" onSubmit={(e) => { e.preventDefault(); p.onStart(); }}>
-        <Field label="Player 1 — Game title">
+        <Field
+          label="Player 1 — Game title"
+          aside={<MicButton onStart={() => blip.move()} onText={(t) => p.setName(t.replace(/[.!?]+$/, "").slice(0, 40))} />}
+        >
           <input
             value={p.name}
             onChange={(e) => p.setName(e.target.value)}
@@ -384,7 +388,18 @@ function Insert(p: {
             className="w-full bg-transparent font-display text-2xl font-extrabold outline-none placeholder:text-white/25"
           />
         </Field>
-        <Field label="What's the game?">
+        <Field
+          label="What's the game?"
+          aside={
+            <MicButton
+              onStart={() => blip.move()}
+              onText={(t, final) => {
+                const s = t.charAt(0).toUpperCase() + t.slice(1);
+                p.setPitch((final && s && !/[.!?]$/.test(s) ? s + "." : s).slice(0, 300));
+              }}
+            />
+          }
+        >
           <textarea
             value={p.pitch}
             onChange={(e) => p.setPitch(e.target.value)}
@@ -420,10 +435,13 @@ function Insert(p: {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, aside, children }: { label: string; aside?: React.ReactNode; children: React.ReactNode }) {
   return (
     <label className="block rounded-2xl border border-white/10 bg-white/[0.03] px-4 pt-2.5 pb-3 focus-within:border-brand">
-      <span className="hud mb-1 block text-base text-brand">{label}</span>
+      <span className="mb-1 flex items-center justify-between gap-2">
+        <span className="hud text-base text-brand">{label}</span>
+        {aside}
+      </span>
       {children}
     </label>
   );
