@@ -1,5 +1,7 @@
 # 👾 Launch Kit
 
+<img src="docs/example-run/banner.jpg" alt="Launch Kit on a phone: the store, entering a game, loading, the finished kit and the store shelf" width="100%">
+
 **Your game's storefront from a few taps.** Built for the Comfy hackathon on [Comfy Router](https://docs.comfy.org/development/comfy-router/quickstart): 7 models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2, Seedance 2.0 Fast), all through the [Comfy API](https://comfy.org/platform/comfy-api/).
 
 🎮 **[Open the app →](https://launch-kit-beta.vercel.app)** (works best on a phone; access code: **PLAYER1**)
