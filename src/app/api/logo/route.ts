@@ -1,4 +1,4 @@
-import { MODELS, asPng, errorResponse, fetchBuffer, runJson, toDataUrl } from "@/lib/comfy";
+import { MODELS, asPng, errorResponse, fetchBuffer, runJson, runJsonSafe, toDataUrl } from "@/lib/comfy";
 import type { Brief } from "@/lib/types";
 
 export const maxDuration = 300;
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     const colors = brief.palette.map((p) => `${p.name} ${p.hex}`).join(", ");
     const prompt = `Video game title logo that reads exactly "${brief.title}". ${brief.logoPrompt}. Lettering: ${brief.fontVibe}. Colors: ${colors}. ${brief.artStyle}. Centered, isolated on a flat solid plain white background, crisp edges, no other text, no scene.`;
 
-    const gen = await runJson<IdeogramOut>(MODELS.titleLogo, { prompt, size: "1536x864", quality: "medium", magic_prompt: "off" });
+    const gen = await runJsonSafe<IdeogramOut>(MODELS.titleLogo, { prompt, quality: "medium", magic_prompt: "off" }, { prompt });
     const url = gen.data?.find((d) => d.is_image_safe !== false)?.url;
     if (!url) throw new Error("Title logo generation returned no image");
 

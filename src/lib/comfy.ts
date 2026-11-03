@@ -28,6 +28,21 @@ export async function runJson<T = unknown>(model: string, input: unknown, timeou
 }
 
 /** Run a Router model that answers with raw bytes (e.g. ElevenLabs audio). */
+/**
+ * Try the full request; if the model rejects it as invalid (400/422), log the
+ * validation detail and retry once with only the required fields.
+ */
+export async function runJsonSafe<T = unknown>(model: string, full: unknown, minimal: unknown, timeoutMs?: number): Promise<T> {
+  try {
+    return await runJson<T>(model, full, timeoutMs);
+  } catch (err) {
+    const status = err instanceof ComfyError ? err.httpStatus : undefined;
+    if (status !== 400 && status !== 422) throw err;
+    console.warn(`[${model}] full request rejected, retrying minimal:`, JSON.stringify((err as ComfyError).details ?? {}).slice(0, 1500));
+    return runJson<T>(model, minimal, timeoutMs);
+  }
+}
+
 export async function runBinary(model: string, input: unknown, timeoutMs = 120_000) {
   assertKey();
   const res = await comfy.models.run(model, input as Record<string, unknown>, { timeoutMs });
@@ -97,6 +112,7 @@ export function errorResponse(err: unknown) {
     status = err.httpStatus && err.httpStatus >= 400 ? err.httpStatus : 502;
     if (err.code === "insufficient_credits") message = "Out of Comfy credits — top up your workspace.";
     if (err.code === "content_policy_violation") message = "The model refused this prompt (content policy). Try rewording.";
+    return Response.json({ error: message, code: err.code, details: err.details ?? null }, { status });
   }
   return Response.json({ error: message }, { status });
 }
