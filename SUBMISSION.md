@@ -1,6 +1,6 @@
 # Launch Kit — Hackathon Submission
 
-Launch Kit gives non-technical game enthusiasts a storefront from one sentence in about 2½ minutes, from their phone. No design skills, no tools, no prompts to write.
+Launch Kit gives game enthusiasts a storefront from one sentence in about 2½ minutes, from their phone. No design skills, no tools, no prompts to write.
 
 ## Who it's for, and why it matters
 
