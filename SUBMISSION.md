@@ -81,6 +81,7 @@ If the live run shows an error, do the entire pitch on tab 2: press Start there 
 
 | What | Link |
 | --- | --- |
+| Demo video | [youtube.com/shorts/gb2lYbPt-mM](https://youtube.com/shorts/gb2lYbPt-mM) |
 | Live app (access code PLAYER1) | [launch-kit-beta.vercel.app](https://launch-kit-beta.vercel.app) |
 | Stage-safe demo | [launch-kit-beta.vercel.app/?demo=1](https://launch-kit-beta.vercel.app/?demo=1) |
 | ▶️ Auto demo: a full kit plays in about 20 seconds, no code needed | [launch-kit-beta.vercel.app/?demo=1&play=1](https://launch-kit-beta.vercel.app/?demo=1&play=1) |

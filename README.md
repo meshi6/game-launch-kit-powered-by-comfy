@@ -4,6 +4,8 @@
 
 **Your game's storefront from a few taps.** Built for the Comfy hackathon on [Comfy Router](https://docs.comfy.org/development/comfy-router/quickstart): 9 models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2, Seedance 2.0 Fast, Meshy 7.1, Meshy Rigging), all through the [Comfy API](https://comfy.org/platform/comfy-api/).
 
+📺 **[Watch the demo video →](https://youtube.com/shorts/gb2lYbPt-mM)**
+
 🎮 **[Open the app →](https://launch-kit-beta.vercel.app)** (works best on a phone; access code: **PLAYER1**)
 
 ▶️ **[Watch the auto demo →](https://launch-kit-beta.vercel.app/?demo=1&play=1)** (a full kit plays in about 20 seconds, no code needed)
