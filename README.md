@@ -20,7 +20,7 @@ Walk into a digital game store, pick an aisle, type your game's name and pitch, 
 | 📼 Animated title sting with audio | `byteplus/dreamina-seedance-2-0-fast-260128` |
 | 🎥 12-second game trailer: multi-shot, music, narrator, ends on the logo | `byteplus/dreamina-seedance-2-0-fast-260128` |
 
-🔥 **The one idea:** a single style guide generated first and fed into every model, so the logo, art, icons, sounds and video read as one game rather than seven AI outputs.
+🔥 **The concept:** a single style guide generated first and fed into every model, so the logo, art, icons, sounds and video read as one game rather than seven AI outputs.
 
 Then you download it as a `.zip`, laid out by platform.
 
