@@ -6,7 +6,7 @@
 
 📺 **[Watch the demo video →](https://youtube.com/shorts/gb2lYbPt-mM)**
 
-🎮 **[Open the app →](https://launch-kit-beta.vercel.app)** (works best on a phone; access code: **PLAYER1**)
+🎮 **[Try it from scratch →](https://launch-kit-beta.vercel.app/?code=PLAYER1)** Pick a style, enter your game's name and one line about it, and press Start. Works best on a phone; the access code (PLAYER1) is already in the link.
 
 ▶️ **[Watch the auto demo →](https://launch-kit-beta.vercel.app/?demo=1&play=1)** (a full kit plays in about 20 seconds, no code needed)
 
