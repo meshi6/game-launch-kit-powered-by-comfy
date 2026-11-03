@@ -1,6 +1,6 @@
 # Launch Kit 🕹️
 
-**Your game's whole storefront from one sentence.** Built for the Comfy hackathon on [Comfy Router](https://docs.comfy.org/development/comfy-router/quickstart): 8 models, 1 API key.
+**Your game's whole storefront from one sentence.** Built for the Comfy hackathon on [Comfy Router](https://docs.comfy.org/development/comfy-router/quickstart): 7 models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2, Seedance 2.0 Fast), all through the Comfy API.
 
 Walk into a digital game store, pick an aisle, type your game's name and pitch, press start. About two minutes later you have a consistent, ready-to-upload kit:
 

@@ -38,7 +38,7 @@ It runs on a phone as a web app you can add to your home screen. The interface i
 
 ## How it uses Comfy
 
-Eight models from six providers, all through **Comfy Router** with one API key and the Comfy TypeScript SDK. The style guide runs first. Five models then run in parallel, the store sizes are built on the phone, and the video goes last, using the finished store image as its first frame.
+Seven models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2 and Seedance 2.0 Fast) from seven providers, all through **Comfy Router**, using the Comfy API and the Comfy TypeScript SDK. The style guide runs first. Five models then run in parallel, the store sizes are built on the phone, and the video goes last, using the finished store image as its first frame.
 
 | Step | Model (Comfy Router ID) | Time in our test |
 | --- | --- | --- |
@@ -59,7 +59,7 @@ Start the live run in the first seconds so it builds while you talk. Keep the de
 
 1. **0–10 s, the problem.** "You finished your game. Now Steam wants ten pieces of art at exact sizes, a logo, an icon and store copy. If you're not a designer, that's where games stall."
 2. **10–20 s, start it.** Swipe the TVs to an aisle, show the pre-filled game, press **Start**. "One sentence. No prompts, no design tools."
-3. **20–45 s, watch it fill.** Point at the loading bar and the TVs switching on. "One art direction goes to eight Comfy models, so everything matches." Play a sound button. Show the tiny-thumbnail score.
+3. **20–45 s, watch it fill.** Point at the loading bar and the TVs switching on. "One art direction goes to seven Comfy models, so everything matches." Play a sound button. Show the tiny-thumbnail score.
 4. **45–55 s, the payoff.** Scroll the store shelf, open one capsule full-screen, play the title sting.
 5. **55–60 s, close.** Tap **Download**. "Ready to upload. Built for the people who can make a game but can't design a store page."
 
