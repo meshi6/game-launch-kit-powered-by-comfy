@@ -75,9 +75,9 @@ It's a mobile-first web app (Next.js 16) you can add to your home screen. `?scre
 
 Steam requires AI-generated content to be disclosed in its content survey. Check Steamworks for the current capsule sizes before you ship.
 
-## 🔓 Open source, your keys, your models
+## 🌍 Open source, your keys, your models
 
-Launch Kit is MIT licensed, and so is the [ComfyUI node pack](https://github.com/meshi6/comfyui-launch-kit). Clone it, add your own Comfy API key, and it runs on your account, with no backend of ours in between.
+Launch Kit is MIT licensed, and so is the [ComfyUI node pack](https://github.com/meshi6/comfyui-launch-kit). Clone it, add your own Comfy API key, and it runs on your account, with no third-party backend in between.
 
 It's built to be model-agnostic:
 
