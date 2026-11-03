@@ -20,7 +20,7 @@ The store page is the first thing a player sees, and small versions of the art d
 
 ## What you get
 
-One sentence in, a ready-to-upload storefront out, downloaded as one zip sorted by platform. Our test run of *Iron Front* (a military shooter) finished every step, with the title scoring 8/10 on the tiny-thumbnail check.
+One sentence in, a ready-to-upload storefront out, downloaded as one zip sorted by platform. Our test run of *Iron Front* (a military shooter) finished every step, with the title scoring 8/10 on the tiny-thumbnail check ([see the full run, screen by screen](https://github.com/meshi6/game-launch-kit-powered-by-comfy/blob/main/docs/example-run/README.md)).
 
 | You get | Why a non-designer needs it |
 | --- | --- |
@@ -73,3 +73,4 @@ If the live run is slow or a model refuses, switch tabs to the demo link and pre
 | Stage-safe demo | [launch-kit-beta.vercel.app/?demo=1](https://launch-kit-beta.vercel.app/?demo=1) |
 | Kiosk mode (autoplays) | [launch-kit-beta.vercel.app/?demo=1&play=1](https://launch-kit-beta.vercel.app/?demo=1&play=1) |
 | Code | [github.com/meshi6/game-launch-kit-powered-by-comfy](https://github.com/meshi6/game-launch-kit-powered-by-comfy) |
+| Example run, screen by screen | [docs/example-run](https://github.com/meshi6/game-launch-kit-powered-by-comfy/blob/main/docs/example-run/README.md) |
