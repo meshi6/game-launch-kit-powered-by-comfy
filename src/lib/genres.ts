@@ -57,6 +57,15 @@ export const GENRES: Genre[] = [
     example: { name: "Frostbound", pitch: "An open-world fantasy RPG where a dragon-blooded exile roams frozen northern kingdoms relearning forgotten rune magic." },
   },
   {
+    id: "arcade",
+    art: "/aisles/arcade.jpg",
+    name: "Retro Arcade",
+    blurb: "Pixels, neon, high scores.",
+    direction: "80s/90s arcade cabinet energy: crisp pixel art, CRT glow, neon magenta and cyan, chunky bitmap lettering",
+    colors: ["#ff3fa4", "#3ff2ff"],
+    example: { name: "Neon Drift Undead", pitch: "A synthwave racing roguelike where you outrun a zombie horde through a burning city at 300 km/h." },
+  },
+  {
     id: "own",
     name: "Your Own",
     blurb: "Bring any idea. We'll find the style.",
