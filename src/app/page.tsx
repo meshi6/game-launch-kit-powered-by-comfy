@@ -88,7 +88,7 @@ export default function Home() {
     blip.select();
     setZipping(true);
     try {
-      const blob = await buildZip({ brief: kit.brief, logo: kit.logo, keyArt: kit.keyArt, emblemSvg: kit.emblem, capsules: kit.capsules, icons: kit.icons, sounds: kit.sounds, videoUrl: kit.video.url });
+      const blob = await buildZip({ brief: kit.brief, logo: kit.logo, keyArt: kit.keyArt, emblemSvg: kit.emblem, capsules: kit.capsules, icons: kit.icons, sounds: kit.sounds, videoUrl: kit.video.url, trailerUrl: kit.trailer.url });
       const file = new File([blob], `${kit.brief.title.replace(/\W+/g, "-")}-launch-kit.zip`, { type: "application/zip" });
       if (navigator.canShare?.({ files: [file] })) {
         await navigator.share({ files: [file], title: `${kit.brief.title} launch kit` }).catch(() => {});
@@ -409,7 +409,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 /* ================= KIT WALL ================= */
 
 function KitWall({ kit, onZoom }: { kit: ReturnType<typeof useKit>; onZoom: (c: Composed) => void }) {
-  const { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video } = kit;
+  const { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video, trailer } = kit;
   const hero = capsules.find((c) => c.capsule.id === "steam-main");
   const doneCount = STEPS.filter((s) => steps[s].status === "ok" || steps[s].status === "err").length;
   const loading = STEPS.some((s) => steps[s].status === "run");
@@ -458,7 +458,7 @@ function KitWall({ kit, onZoom }: { kit: ReturnType<typeof useKit>; onZoom: (c: 
       {(loading || STEPS.some((s) => steps[s].status === "err")) && (
         <div className="pill mt-5 rounded-2xl p-3">
           <ul className="space-y-1.5">
-            {STEPS.map((s) => <StepRow key={s} label={STEP_LABEL[s]} st={steps[s]} extra={s === "sting" ? video.status : undefined} />)}
+            {STEPS.map((s) => <StepRow key={s} label={STEP_LABEL[s]} st={steps[s]} extra={s === "sting" ? video.status : s === "trailer" ? trailer.status : undefined} />)}
           </ul>
         </div>
       )}
@@ -528,6 +528,34 @@ function KitWall({ kit, onZoom }: { kit: ReturnType<typeof useKit>; onZoom: (c: 
         {video.url && (
           <a href={video.url} target="_blank" rel="noreferrer" download className="pill hud mt-3 inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-lg">
             <span className="text-brand">⇩</span> Save video (.mp4)
+          </a>
+        )}
+      </Shelf>
+
+      {/* game trailer */}
+      <Shelf title="Game trailer" aside="12 s · music + narrator">
+        <Crt glow={glow} ratio="16/9" reflect={false}>
+          {trailer.url ? (
+            <video src={trailer.url} className="tune h-full w-full object-cover" controls playsInline loop />
+          ) : steps.trailer.status === "err" ? (
+            <Err msg={steps.trailer.error} />
+          ) : (
+            <>
+              {keyArt && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={keyArt} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
+              )}
+              <div className="absolute inset-0 grid place-items-center">
+                <span className="hud blink rounded bg-black/60 px-2 py-1 text-lg">
+                  {steps.trailer.status === "run" ? `${trailer.status ?? "Submitting"} · ~2–3 min` : "Waits for key art"}
+                </span>
+              </div>
+            </>
+          )}
+        </Crt>
+        {trailer.url && (
+          <a href={trailer.url} target="_blank" rel="noreferrer" download className="pill hud mt-3 inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-lg">
+            <span className="text-brand">⇩</span> Save trailer (.mp4)
           </a>
         )}
       </Shelf>

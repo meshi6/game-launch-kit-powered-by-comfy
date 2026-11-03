@@ -18,6 +18,8 @@ Return ONLY a JSON object, no prose, matching exactly:
   "emblemPrompt": string,         // a simple bold vector emblem/mark for the app icon. No text or letters. Centered, flat, iconic
   "keyArtPrompt": string,         // cinematic wide key art of the game's hero moment. ABSOLUTELY NO TEXT, letters or logos. Leave calm negative space in the center-upper area for a logo
   "stingPrompt": string,          // 5s camera motion + effects for an animated title reveal starting from the key art with logo (e.g. slow push-in, particles, light sweep, logo glints). Include the sound design in words
+  "trailerPrompt": string,        // a 12-second game trailer as 4 numbered shots (~3s each): 1) atmospheric establishing shot of the world, 2) the hero in action, 3) the core gameplay fantasy at its most exciting, 4) a final beat that resolves on the title logo. Describe camera moves, action and music/sound. Original characters only
+  "trailerLine": string,          // ONE short narrator line for the trailer, <= 10 words, punchy, no game title
   "icons": [{"name": string, "prompt": string}],     // exactly 6 in-game UI/item icons that fit the game (e.g. health, currency, signature item, ability), each a single centered object
   "sfx": [{"name": string, "prompt": string, "seconds": number}], // exactly 3: "Title sting" (3-5s), "Menu select" (0.5-1s), "Level up" (1.5-3s). Describe the sound concretely
   "storeBlurb": string,           // 2-3 sentence Steam short description, punchy

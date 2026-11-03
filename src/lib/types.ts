@@ -12,6 +12,8 @@ export type Brief = {
   emblemPrompt: string; // Recraft vector mark / app icon
   keyArtPrompt: string; // Nano Banana key art, no text
   stingPrompt: string; // Seedance logo reveal motion
+  trailerPrompt?: string; // Seedance 12s multi-shot trailer, shot by shot
+  trailerLine?: string; // one narrator line spoken in the trailer
   icons: { name: string; prompt: string }[]; // 6 UI/item icons
   sfx: { name: string; prompt: string; seconds: number }[]; // 3 sounds
   storeBlurb: string; // short Steam description

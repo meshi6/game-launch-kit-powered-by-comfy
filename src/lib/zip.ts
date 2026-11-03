@@ -15,6 +15,7 @@ export async function buildZip(kit: {
   icons: { name: string; svg: string }[];
   sounds: { name: string; audio: string }[];
   videoUrl?: string;
+  trailerUrl?: string;
 }) {
   const { brief } = kit;
   const zip = new JSZip();
@@ -45,7 +46,7 @@ ${brief.features.map((f) => `- ${f}`).join("\n")}
 - \`store/\` Steam, itch.io and mobile assets at exact sizes
 - \`ui-icons/\` vector in-game icons
 - \`audio/\` sound kit
-${kit.videoUrl ? "- `video/` animated title sting\n" : ""}
+${kit.videoUrl || kit.trailerUrl ? "- `video/` animated title sting and game trailer\n" : ""}
 Generated with Launch Kit on Comfy Router. Steam requires AI-generated content to be disclosed in the content survey.
 `,
   );
@@ -67,13 +68,14 @@ Generated with Launch Kit on Comfy Router. Steam requires AI-generated content t
   const audio = root.folder("audio")!;
   kit.sounds.forEach((s) => audio.file(`${slug(s.name)}.mp3`, b64(s.audio), { base64: true }));
 
-  if (kit.videoUrl) {
+  for (const [url, name] of [[kit.videoUrl, "title-sting"], [kit.trailerUrl, "game-trailer"]] as const) {
+    if (!url) continue;
     try {
-      const r = await fetch(kit.videoUrl);
+      const r = await fetch(url);
       if (!r.ok) throw new Error();
-      root.folder("video")!.file("title-sting.mp4", await r.arrayBuffer());
+      root.folder("video")!.file(`${name}.mp4`, await r.arrayBuffer());
     } catch {
-      root.folder("video")!.file("title-sting-url.txt", kit.videoUrl + "\n(Link expires; download it soon.)\n");
+      root.folder("video")!.file(`${name}-url.txt`, url + "\n(Link expires; download it soon.)\n");
     }
   }
 

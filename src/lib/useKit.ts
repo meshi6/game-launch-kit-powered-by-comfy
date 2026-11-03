@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CAPSULES, type Brief } from "./types";
 import { composeCapsule, loadImage, svgToDataUrl, thumbnail, trimLogo, type Composed } from "./compose";
 
-export type StepId = "brief" | "logo" | "keyart" | "emblem" | "icons" | "sfx" | "store" | "sting";
+export type StepId = "brief" | "logo" | "keyart" | "emblem" | "icons" | "sfx" | "store" | "sting" | "trailer";
 export type StepState = { status: "idle" | "run" | "ok" | "err"; error?: string; t0?: number; t1?: number };
 
 export const STEP_LABEL: Record<StepId, string> = {
@@ -15,6 +15,7 @@ export const STEP_LABEL: Record<StepId, string> = {
   sfx: "Sound kit · ElevenLabs",
   store: "Store sizes + legibility",
   sting: "Title sting · Seedance",
+  trailer: "Game trailer · Seedance",
 };
 export const STEPS = Object.keys(STEP_LABEL) as StepId[];
 
@@ -35,6 +36,19 @@ async function post<T>(url: string, body: unknown): Promise<T> {
   return j as T;
 }
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/** Poll a queued Seedance request until it finishes; reports queue/render status. */
+async function pollVideo(requestId: string, alive: () => boolean, onStatus: (s: string) => void): Promise<string> {
+  for (let i = 0; i < 150 && alive(); i++) {
+    await sleep(5000);
+    const r = await fetch(`/api/sting?id=${encodeURIComponent(requestId)}`, { headers: passHeader() }).then((x) => x.json());
+    if (r.status === "FAILED") throw new Error(r.error ?? "Video failed");
+    if (r.error) throw new Error(r.error);
+    if (r.status === "COMPLETED") return r.videoUrl as string;
+    onStatus(r.queuePosition ? `Queue #${r.queuePosition}` : "Rendering");
+  }
+  throw new Error("Timed out");
+}
 const idle = () => Object.fromEntries(STEPS.map((s) => [s, { status: "idle" }])) as Record<StepId, StepState>;
 
 async function urlToDataUrl(src: string): Promise<string> {
@@ -56,6 +70,7 @@ type DemoKit = {
   icons: { name: string; src: string }[];
   sounds: { name: string; src: string }[];
   video: string;
+  trailer?: string;
 };
 
 /** Build every store size on-device, then score the smallest one. */
@@ -88,6 +103,7 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
   const [capsules, setCapsules] = useState<Composed[]>([]);
   const [legible, setLegible] = useState<Legible>();
   const [video, setVideo] = useState<{ url?: string; status?: string }>({});
+  const [trailer, setTrailer] = useState<{ url?: string; status?: string }>({});
   const runId = useRef(0);
   const cb = useRef(onStepDone);
   useEffect(() => {
@@ -100,7 +116,7 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
     runId.current++;
     setSteps(idle());
     setBrief(undefined); setLogo(undefined); setKeyArt(undefined); setEmblem(undefined);
-    setIcons([]); setSounds([]); setCapsules([]); setLegible(undefined); setVideo({});
+    setIcons([]); setSounds([]); setCapsules([]); setLegible(undefined); setVideo({}); setTrailer({});
   }, []);
 
   /** Shared runner: marks a step running/ok/err and fires the step sound. */
@@ -147,6 +163,14 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
     const [lg, art, emb] = await Promise.all([logoP, artP, embP]);
     if (!alive() || (!art && !lg)) return;
 
+    if (art) {
+      step("trailer", async () => {
+        const { requestId } = await post<{ requestId: string }>("/api/trailer", { brief: b, keyArt: art, logo: lg });
+        const url = await pollVideo(requestId, alive, (st) => alive() && setTrailer({ status: st }));
+        if (alive()) setTrailer({ url, status: "COMPLETED" });
+      });
+    }
+
     const composed = await step("store", async () => {
       const { out, thumb } = await composeStore(b, lg, art, emb);
       if (alive()) setCapsules(out);
@@ -163,18 +187,8 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
     if (!main) return;
     step("sting", async () => {
       const { requestId } = await post<{ requestId: string }>("/api/sting", { brief: b, frame: main.dataUrl });
-      for (let i = 0; i < 120 && alive(); i++) {
-        await sleep(5000);
-        const r = await fetch(`/api/sting?id=${encodeURIComponent(requestId)}`, { headers: passHeader() }).then((x) => x.json());
-        if (r.status === "FAILED") throw new Error(r.error ?? "Video failed");
-        if (r.error) throw new Error(r.error);
-        if (r.status === "COMPLETED") {
-          if (alive()) setVideo({ url: r.videoUrl, status: "COMPLETED" });
-          return;
-        }
-        if (alive()) setVideo({ status: r.queuePosition ? `Queue #${r.queuePosition}` : "Rendering" });
-      }
-      throw new Error("Timed out");
+      const url = await pollVideo(requestId, alive, (st) => alive() && setVideo({ status: st }));
+      if (alive()) setVideo({ url, status: "COMPLETED" });
     });
   }, [begin]);
 
@@ -221,6 +235,17 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
       }
     });
     if (!alive()) return;
+    if (m.trailer) {
+      const trailerUrl = m.trailer;
+      step("trailer", async () => {
+        for (const s of ["Queue #2", "Rendering", "Rendering", "Rendering"]) {
+          if (!alive()) return;
+          setTrailer({ status: s });
+          await sleep(2200);
+        }
+        if (alive()) setTrailer({ url: trailerUrl, status: "COMPLETED" });
+      });
+    }
     step("sting", async () => {
       for (const s of ["Queue #1", "Rendering", "Rendering"]) {
         if (!alive()) return;
@@ -231,5 +256,5 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
     });
   }, [begin]);
 
-  return { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video, generate, replay, reset };
+  return { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video, trailer, generate, replay, reset };
 }
