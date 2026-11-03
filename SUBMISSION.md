@@ -39,7 +39,7 @@ It runs on a phone as a web app you can add to your home screen. The interface i
 
 ## How it uses Comfy
 
-Seven models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2 and Seedance 2.0 Fast) from seven providers, all through **Comfy Router**, using the Comfy API and the Comfy TypeScript SDK. The style guide runs first. Five models then run in parallel, the store sizes are built on the phone, and the video goes last, using the finished store image as its first frame.
+Seven models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2 and Seedance 2.0 Fast) from seven providers, all through **Comfy Router**, using the [Comfy API](https://comfy.org/platform/comfy-api/) and the Comfy TypeScript SDK. The style guide runs first. Five models then run in parallel, the store sizes are built on the phone, and the video goes last, using the finished store image as its first frame.
 
 | Step | Model (Comfy Router ID) | Time in our test |
 | --- | --- | --- |
