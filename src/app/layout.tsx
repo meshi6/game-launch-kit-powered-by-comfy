@@ -9,7 +9,7 @@ const hud = VT323({ variable: "--font-hud", subsets: ["latin"], weight: "400" })
 
 export const metadata: Metadata = {
   title: "Launch Kit",
-  description: "Your indie game's whole storefront from one sentence — logo, key art, Steam capsules, UI icons, sounds and an animated title sting.",
+  description: "Your game's whole storefront from one sentence — logo, key art, Steam capsules, UI icons, sounds and an animated title sting.",
   applicationName: "Launch Kit",
   appleWebApp: { capable: true, title: "Launch Kit", statusBarStyle: "black-translucent" },
   
