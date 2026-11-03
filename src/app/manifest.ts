@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Launch Kit",
     short_name: "Launch Kit",
-    description: "Your game's whole storefront from a few taps.",
+    description: "Your game's storefront from a few taps.",
     start_url: "/",
     display: "standalone",
     background_color: "#0b0a10",
