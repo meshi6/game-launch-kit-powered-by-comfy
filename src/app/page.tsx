@@ -38,6 +38,18 @@ export default function Home() {
 
   useEffect(() => setMuted(!sound), [sound]);
 
+  // ?code=XXXX stores the access code, so a shared link skips the "Insert coin" screen
+  useEffect(() => {
+    const url = new URL(location.href);
+    const code = url.searchParams.get("code");
+    if (!code) return;
+    try {
+      localStorage.setItem(PASS_KEY, code.trim());
+    } catch {}
+    url.searchParams.delete("code");
+    history.replaceState(null, "", url.pathname + url.search + url.hash);
+  }, []);
+
   // ?screen=insert|kit jumps straight to a screen (handy for demos and previews)
   useEffect(() => {
     const s = new URLSearchParams(location.search).get("screen");
