@@ -39,6 +39,8 @@ Walk into a digital game store, pick an aisle, type your game's name and pitch, 
 
 🔥 **The concept:** a single style guide generated first and fed into every model, so the logo, art, icons, sounds and video read as one game rather than nine AI outputs.
 
+The same approach works beyond games: swap the style guide's brief and it creates matching brand assets for a product launch, an app, a podcast, an event or a creator channel, with logo, key visuals, every platform size, sound, a promo video and a 3D mascot, all in one style.
+
 Then you download it as a `.zip`, laid out by platform.
 
 ## 🧑‍💻 Run it
