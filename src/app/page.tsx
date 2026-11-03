@@ -351,7 +351,7 @@ function Insert(p: {
   const ready = p.name.trim() && p.pitch.trim();
   return (
     <main className="mx-auto max-w-md px-4 pb-32">
-      <button onClick={p.onBack} className="hud mt-1 text-lg text-muted">◂ Back to store</button>
+      <button onClick={p.onBack} className="hud mt-1 text-lg text-muted">◂ Back to styles</button>
 
       <div className="mt-3">
         <Crt glow={p.genre.colors[0]} ratio="16/9" size="lg" reflect={false}>
