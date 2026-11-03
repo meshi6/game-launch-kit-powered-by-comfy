@@ -41,15 +41,28 @@ Then you download it as a `.zip`, laid out by platform.
 
 ## 🧑‍💻 Run it
 
-```bash
-npm install
-# .env.local
-COMFY_API_KEY=comfyui-...        # platform.comfy.org → API keys
-LAUNCH_PASSCODE=choose-a-code     # optional: gates /api/* for public demos
-npm run dev -- -H 0.0.0.0        # open on your phone on the same Wi-Fi
-```
+**You need:** Node.js 22 or newer, and a Comfy API key with credits ([platform.comfy.org](https://platform.comfy.org/profile/api-keys)).
 
-It's a mobile-first PWA (Next.js 16), so you can add it to your home screen. Append `?screen=insert` or `?screen=kit` to jump to a screen.
+1. Get the code and install:
+   ```bash
+   git clone https://github.com/meshi6/game-launch-kit-powered-by-comfy.git
+   cd game-launch-kit-powered-by-comfy
+   npm install
+   ```
+2. Create a file named `.env.local` in that folder:
+   ```bash
+   COMFY_API_KEY=comfyui-...       # your Comfy API key
+   LAUNCH_PASSCODE=choose-a-code    # optional: asks for this code before generating
+   ```
+3. Start it:
+   ```bash
+   npm run dev
+   ```
+4. Open http://localhost:3000, pick a style, enter your game and press Start. To try it on your phone on the same Wi-Fi, run `npm run dev -- -H 0.0.0.0` and open your computer's local IP on port 3000.
+
+No key handy? Open `/?demo=1&play=1` to replay a finished kit with no API calls.
+
+It's a mobile-first web app (Next.js 16) you can add to your home screen. `?screen=insert` or `?screen=kit` jumps to a screen; `?aisle=rpg` (or `crime`, `shooter`, `rts`, `sandbox`, `arcade`, `own`) opens a style.
 
 ## Layout
 
