@@ -34,7 +34,7 @@ One sentence in, a ready-to-upload storefront out, downloaded as one zip sorted 
 | 5-second animated title sting with sound | A trailer opener or social clip |
 | Store description + 4 feature bullets | Copy ready to paste into Steam |
 
-It runs on a phone as a web app you can add to your home screen. The interface is a retro game store: you pick an aisle (open-world crime, military shooter, space strategy, block sandbox, fantasy RPG, retro arcade, or your own idea), and your kit fills a wall of TVs as each piece arrives.
+It runs on a phone as a web app you can add to your home screen. The interface is a digital game store: you pick an aisle (open-world crime, military shooter, space strategy, block sandbox, fantasy RPG, retro arcade, or your own idea), and your kit fills a wall of TVs as each piece arrives.
 
 ## How it uses Comfy
 

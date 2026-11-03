@@ -2,7 +2,7 @@
 
 **Your game's whole storefront from one sentence.** Built for the Comfy hackathon on [Comfy Router](https://docs.comfy.org/development/comfy-router/quickstart): 8 models, 1 API key.
 
-Walk into a retro game store, pick an aisle, type your game's name and pitch, press start. About two minutes later you have a consistent, ready-to-upload kit:
+Walk into a digital game store, pick an aisle, type your game's name and pitch, press start. About two minutes later you have a consistent, ready-to-upload kit:
 
 | Asset | Model (via Comfy Router) |
 | --- | --- |
