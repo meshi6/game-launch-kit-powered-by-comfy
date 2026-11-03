@@ -32,6 +32,7 @@ A few taps in, a ready-to-upload storefront out, downloaded as one zip sorted by
 | App emblem + 6 in-game UI icons (SVG) | Matching icons for the game itself |
 | 3 sound effects: title sting, menu select, level up | Audio without a sound designer |
 | 5-second animated title sting with sound | A trailer opener or social clip |
+| 12-second game trailer: several shots, music, a narrator line, ends on the logo | A promo video without editing software or a video team |
 | Store description + 4 feature bullets | Copy ready to paste into Steam |
 
 It runs on a phone as a web app you can add to your home screen. The interface is a digital game store: you pick an aisle (open-world crime, military shooter, space strategy, block sandbox, fantasy RPG, retro arcade, or your own idea), and your kit fills a wall of TVs as each piece arrives.
@@ -50,6 +51,7 @@ Seven models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Bana
 | Sound effects | `elevenlabs/eleven_sfx_v2` | 3 s |
 | Tiny-thumbnail check | `anthropic/claude-sonnet-5-5` (vision) | ~5 s |
 | Title sting video | `byteplus/dreamina-seedance-2-0-fast-260128` | 40–100 s |
+| Game trailer (12 s) | `byteplus/dreamina-seedance-2-0-fast-260128` | ~2–3 min |
 
 The Comfy API key stays on the server; a short access code protects the public demo from spending credits. Prompts are written to keep every design original, so a user who types "like GTA" gets the genre and mood, not someone else's logo or characters.
 

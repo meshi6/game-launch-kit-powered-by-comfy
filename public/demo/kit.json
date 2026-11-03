@@ -1,86 +1,88 @@
 {
  "brief": {
-  "title": "Moss & Mortar",
-  "tagline": "Build together. Weather every storm.",
-  "genre": "Cozy co-op castle-builder",
-  "mood": "warm, whimsical, snug, hopeful, gentle",
-  "artStyle": "soft painterly storybook illustration, gouache and watercolor textures, rounded friendly shapes, gentle hand-inked outlines in warm brown, diffused golden-hour lighting, mossy greens, cream and pond-teal palette with peachy highlights",
+  "title": "Frostbound",
+  "tagline": "Relearn the runes. Wake the dragon within.",
+  "genre": "Open-world fantasy RPG",
+  "mood": "Haunting, epic, solitary, defiant",
+  "artStyle": "cinematic oil-painting realism, visible painterly brushwork, soft atmospheric haze, low golden-hour backlight against cold blue shadows, weathered textures, strong silhouettes, palette of steel blue, glacial white, charcoal slate and ember gold",
   "palette": [
    {
-    "name": "Moss Green",
-    "hex": "#6B8F4E"
+    "name": "Glacier Steel",
+    "hex": "#3E6A8C"
    },
    {
-    "name": "Lily Pad Teal",
-    "hex": "#3F8A8C"
+    "name": "Ember Gold",
+    "hex": "#E3A13B"
    },
    {
-    "name": "Deep Pondwater",
-    "hex": "#24362F"
+    "name": "Deep Slate Night",
+    "hex": "#10161F"
    },
    {
-    "name": "Cream Mortar",
-    "hex": "#F6EBD0"
+    "name": "Rime White",
+    "hex": "#E6EEF3"
    },
    {
-    "name": "Firefly Peach",
-    "hex": "#F2B26B"
+    "name": "Rune Glow",
+    "hex": "#FFC866"
    }
   ],
-  "fontVibe": "chunky hand-lettered storybook serif with wobbly rounded edges, letters look like stacked mossy stones with tiny leaf sprouts, ampersand shaped like a curled vine, cream fill with deep green outline",
-  "logoPrompt": "Hand-lettered game title logo reading \"Moss & Mortar\" in quotes exactly, centered, chunky rounded storybook lettering shaped like mossy stacked stones with cream fill, deep pond-green outline, small leaf sprouts and a curling vine ampersand, soft painterly texture, isolated on a flat solid plain white background, no scene, no other text",
-  "emblemPrompt": "Simple bold flat vector emblem of a cute round frog head wearing a tiny stone castle tower as a crown, moss-green and cream with deep pond-green outline and a peach accent, rounded shapes, centered, iconic, no text or letters",
-  "keyArtPrompt": "Cinematic wide key art, soft painterly storybook illustration, gouache and watercolor textures, rounded friendly shapes, warm golden-hour light: a team of cheerful frogs in tiny aprons and helmets stacking mossy stone walls on a lily-pad castle at the edge of a glowing pond, while a swirling autumn storm of rain and leaves gathers on the horizon, fireflies and warm lantern glow, mossy greens, cream and teal palette with peach highlights, calm misty empty sky in the center-upper area for a logo, no text, no letters, no logos",
-  "stingPrompt": "5 seconds: slow cinematic push-in on the key art as drifting leaves and glowing fireflies float across the frame, gentle rain ripples spread on the pond, a soft warm light sweep passes over the logo making it glint once, the storm clouds in the distance gently churn. Sound design: soft pond ambience with a few frog ribbits, a warm plucky ukulele and music-box melody, a satisfying stone-clack as the logo settles, ending on a gentle chime.",
+  "fontVibe": "carved weathered stone serif capitals, chiseled edges, frost clinging to the grooves, faint ember-gold glow seeping from cracks in the letters",
+  "logoPrompt": "The title \"Frostbound\" as a game logo, centered, in carved weathered stone serif capital lettering with chiseled edges, frost and ice crystals in the grooves, faint ember-gold light glowing from hairline cracks, steel blue and rime white tones, subtle bevel and depth, isolated on a flat solid plain white background, no scene, no other text",
+  "emblemPrompt": "A bold flat vector emblem: a angular rune-carved circle in steel blue with a stylized dragon claw or flame-shaped rune in ember gold at its center, a small snowflake-like fracture motif around the edge, simple geometric shapes, strong silhouette, deep slate background, centered, iconic, no text or letters",
+  "keyArtPrompt": "Cinematic wide shot in oil-painting realism: a lone cloaked exile with a faintly glowing ember-gold rune on one raised hand stands on a snowy ridge before crumbling ancient stone ruins and standing runestones, vast frozen northern mountains stretching away, a colossal dragon silhouetted on the distant horizon with golden low sun breaking through clouds, drifting snow and cold steel blue shadows, calm open sky and soft haze in the center-upper area as negative space, painterly brushwork, no text, no letters, no logos",
+  "stingPrompt": "Five seconds: slow cinematic push-in on the key art as snow drifts across the frame in layered parallax, a warm ember-gold light sweep rolls across the mountains and ruins, the distant dragon's wings shift subtly, the carved stone logo catches a glint and its cracks pulse with golden glow. Sound: deep low wind swell, a distant dragon roar echoing, a resonant stone-on-ice impact as the logo settles, shimmering crystalline chimes fading out.",
+  "trailerPrompt": "1) Slow aerial glide over frozen northern mountains and snow-buried ruins at dawn, wind-blown snow, a dragon silhouette crossing the pale sun; low droning strings and howling wind. 2) Tracking shot of the cloaked dragon-blooded exile trudging through a blizzard, then kneeling to touch a runestone that ignites with ember-gold light; a single cello note builds. 3) Dynamic wide-to-close action: the exile unleashes rune magic, carving glowing sigils in the air to shatter ice golems and freeze a charging beast mid-leap, then leaps off a cliff as the dragon rises behind; drums and brass surge with cracking ice impacts. 4) Calm slow push-in as the exile stands on a ridge facing the dragon, eyes flickering gold, the screen fading to the carved stone Frostbound logo with a final booming hit and fading wind.",
+  "trailerLine": "What the cold buried, the blood remembers.",
   "icons": [
    {
-    "name": "Lily Heart",
-    "prompt": "Single centered game UI icon of a heart-shaped lily pad with a tiny pink blossom, soft painterly storybook style, rounded shapes, warm brown outline, mossy green and cream, transparent or plain background"
+    "name": "Health Flask",
+    "prompt": "A single centered glass flask of glowing crimson elixir with a frosted stopper and a small iron rune band, oil-painting realism, steel blue and ember gold accents, dark slate background"
    },
    {
-    "name": "Pebble Coin",
-    "prompt": "Single centered game UI icon of a smooth round golden-cream pebble coin with a tiny frog stamp, soft painterly storybook style, rounded shapes, warm brown outline, plain background"
+    "name": "Gold Currency",
+    "prompt": "A single centered ancient gold coin stamped with a dragon rune, worn edges and frost rime, painterly realism, ember gold glow, dark slate background"
    },
    {
-    "name": "Mortar Trowel",
-    "prompt": "Single centered game UI icon of a small trowel with a wooden handle dabbed with cream mortar and a bit of moss, soft painterly storybook style, rounded shapes, warm brown outline, plain background"
+    "name": "Rune Stone",
+    "prompt": "A single centered carved standing stone fragment with a glowing ember-gold rune, frosty cracks, oil-painting realism, dark slate background"
    },
    {
-    "name": "Mossy Brick",
-    "prompt": "Single centered game UI icon of a chunky rounded stone brick covered in lush green moss and tiny mushrooms, soft painterly storybook style, warm brown outline, plain background"
+    "name": "Dragonfire Ability",
+    "prompt": "A single centered swirl of ember-gold dragon flame shaped into a curling rune sigil, painterly realism, sparks, dark slate background"
    },
    {
-    "name": "Storm Shield",
-    "prompt": "Single centered game UI icon of a round shield made from a giant leaf with a teal raindrop emblem, soft painterly storybook style, rounded shapes, warm brown outline, plain background"
+    "name": "Frost Shard Ability",
+    "prompt": "A single centered jagged shard of glacial steel-blue ice with a faint rune etched inside, cold glow, painterly realism, dark slate background"
    },
    {
-    "name": "Firefly Lantern",
-    "prompt": "Single centered game UI icon of a little glass jar lantern with a glowing peach firefly inside and a twine handle, soft painterly storybook style, rounded shapes, warm brown outline, plain background"
+    "name": "Exile's Blade",
+    "prompt": "A single centered worn longsword with a rune-etched blade and fur-wrapped hilt, faint ember glow along the runes, frost on the steel, oil-painting realism, dark slate background"
    }
   ],
   "sfx": [
    {
     "name": "Title sting",
-    "prompt": "Warm cozy title sting: a soft ribbit, a plucky ukulele and music-box arpeggio rising, a satisfying stone clack, ending on a gentle shimmering chime with light water droplets",
+    "prompt": "Deep resonant low brass and taiko drum hit with a distant dragon roar, howling wind swell, crystalline ice shimmer tail, epic and cold",
     "seconds": 4
    },
    {
     "name": "Menu select",
-    "prompt": "Short soft wooden bloop with a tiny water droplet plink, friendly and gentle",
+    "prompt": "Short crisp chisel tap on stone with a tiny ice crystal chime",
     "seconds": 0.7
    },
    {
     "name": "Level up",
-    "prompt": "Joyful ascending xylophone and harp flourish with a happy double ribbit and sparkling chimes, warm and celebratory",
+    "prompt": "Rising warm choir pad with a crackling flame whoosh and ascending bell chimes, ending in a bright golden resonant ring",
     "seconds": 2.5
    }
   ],
-  "storeBlurb": "Rally your froggy friends and raise a castle from moss, mud and mortar! Work together to stack walls, set cozy defenses and shelter your pond kingdom from every storm the seasons throw at it.",
+  "storeBlurb": "Cast out and carrying dragon blood, you wander the frozen northern kingdoms in search of forgotten rune magic. Explore a vast open world of ancient ruins, brutal storms and towering beasts as you master the power that exiled you.",
   "features": [
-   "Build and rebuild your pond castle together in co-op",
-   "Defend against spring showers, summer squalls and winter freezes",
-   "Decorate with mossy, mushroomy, lantern-lit charm",
-   "Play with friends in relaxed, welcoming sessions"
+   "Explore a vast, frozen open world of ruined kingdoms",
+   "Relearn lost rune magic and craft your own spells",
+   "Unleash dragon-blooded powers in fluid, weighty combat",
+   "Forge your fate through choices that reshape the north"
   ]
  },
  "logo": "/demo/logo.png",
@@ -88,27 +90,27 @@
  "emblem": "/demo/emblem.svg",
  "icons": [
   {
-   "name": "Lily Heart",
+   "name": "Health Flask",
    "src": "/demo/icons/0.svg"
   },
   {
-   "name": "Pebble Coin",
+   "name": "Gold Currency",
    "src": "/demo/icons/1.svg"
   },
   {
-   "name": "Mortar Trowel",
+   "name": "Rune Stone",
    "src": "/demo/icons/2.svg"
   },
   {
-   "name": "Mossy Brick",
+   "name": "Dragonfire Ability",
    "src": "/demo/icons/3.svg"
   },
   {
-   "name": "Storm Shield",
+   "name": "Frost Shard Ability",
    "src": "/demo/icons/4.svg"
   },
   {
-   "name": "Firefly Lantern",
+   "name": "Exile's Blade",
    "src": "/demo/icons/5.svg"
   }
  ],
@@ -126,5 +128,6 @@
    "src": "/demo/sfx/2.mp3"
   }
  ],
- "video": "/demo/sting.mp4"
+ "video": "/demo/sting.mp4",
+ "trailer": "/demo/trailer.mp4"
 }

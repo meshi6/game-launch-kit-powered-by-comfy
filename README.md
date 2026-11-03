@@ -16,6 +16,7 @@ Walk into a digital game store, pick an aisle, type your game's name and pitch, 
 | Every Steam capsule size, itch.io cover, app icon | composited on-device |
 | Search-size legibility check (120×45) | `anthropic/claude-sonnet-5-5` (vision) |
 | Animated title sting with audio | `byteplus/dreamina-seedance-2-0-fast-260128` |
+| 12-second game trailer: multi-shot, music, narrator, ends on the logo | `byteplus/dreamina-seedance-2-0-fast-260128` |
 
 **The one idea:** a single style guide generated first and fed into every model, so the logo, art, icons, sounds and video read as one game rather than eight AI outputs.
 
