@@ -1,5 +1,7 @@
 # Launch Kit 🕹️
 
+**[▶ Watch the auto demo](https://launch-kit-beta.vercel.app/?demo=1&play=1)**: a full kit builds on screen in about 20 seconds, no sign-up or access code needed.
+
 **Your game's whole storefront from one sentence.** Built for the Comfy hackathon on [Comfy Router](https://docs.comfy.org/development/comfy-router/quickstart): 7 models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2, Seedance 2.0 Fast), all through the Comfy API.
 
 **[📸 See an example run, screen by screen →](docs/example-run/README.md)**
