@@ -26,6 +26,10 @@ Walk into a digital game store, pick an aisle, type your game's name and pitch, 
 
 Then you download it as a `.zip`, laid out by platform.
 
+🎥 **A trailer it made**, for *Frostbound* (Fantasy RPG): *"What the cold buried, the blood remembers."*
+
+<img src="docs/example-run/trailer-frostbound.jpg" alt="Six frames from the Frostbound trailer: mountains at dawn, the exile at a runestone, the rune igniting, an ice beast, the ruins, the title card" width="100%">
+
 ## 🧑‍💻 Run it
 
 ```bash
