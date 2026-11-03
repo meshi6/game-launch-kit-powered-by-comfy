@@ -74,3 +74,13 @@ It's a mobile-first web app (Next.js 16) you can add to your home screen. `?scre
 - `src/components/Crt.tsx`: the CRT TV look
 
 Steam requires AI-generated content to be disclosed in its content survey. Check Steamworks for the current capsule sizes before you ship.
+
+## 🔓 Open source, your keys, your models
+
+Launch Kit is MIT licensed, and so is the [ComfyUI node pack](https://github.com/meshi6/comfyui-launch-kit). Clone it, add your own Comfy API key, and it runs on your account, with no backend of ours in between.
+
+It's built to be model-agnostic:
+
+- **Every model is one line** in [`src/lib/comfy.ts`](src/lib/comfy.ts). Point a step at any model on Comfy Router, including open-weights models, and adjust that step's request in its route under `src/app/api/`.
+- **The ComfyUI nodes plug into any workflow.** Feed Store Capsules from the open-weights image nodes you already run locally. It composites all 10 store sizes on your own machine, with no API calls.
+- **The style guide is the glue.** Whatever models you choose, one art direction keeps every asset looking like one game.
