@@ -29,6 +29,10 @@ Walk into a digital game store, pick an aisle, type your game's name and pitch, 
 
 <img src="docs/example-run/trailer-frostbound.jpg" alt="Six frames from the Frostbound trailer: mountains at dawn, the exile at a runestone, the rune igniting, an ice beast, the ruins, the title card" width="100%">
 
+3D hero for *Frostbound*: textured, rigged, walking and running, ready for Unity, Godot, Blender or Roblox Studio.
+
+<img src="docs/example-run/hero-frostbound.jpg" alt="The Frostbound 3D hero: a hooded exile in a fur-trimmed steel-blue cloak, shown walking, in the rig pose and running" width="100%">
+
 🔥 **The concept:** a single style guide generated first and fed into every model, so the logo, art, icons, sounds and video read as one game rather than nine AI outputs.
 
 Then you download it as a `.zip`, laid out by platform.

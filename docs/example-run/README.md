@@ -111,6 +111,14 @@ Last, once the key art and logo exist, the kit gets a **12-second trailer** buil
 
 <sub>Seedance 2.0 Fast, about 2–3 minutes, using each kit's key art and logo as references, so every trailer follows its own style guide. See one play in the <a href="https://launch-kit-beta.vercel.app/?demo=1&play=1">auto demo</a>.</sub>
 
+## 6 · The 3D hero
+
+In parallel, the game's main character becomes a **textured, rigged 3D model** with walking and running animations: Meshy 7.1 sculpts and paints it, then Meshy Rigging adds the skeleton. About 2 minutes in our test (54 s + 37 s + 29 s). In the kit it spins and walks on its own TV, with `.glb` downloads for Unity, Godot, Blender or Roblox Studio.
+
+<img src="hero-frostbound.jpg" alt="The Frostbound 3D hero: a hooded exile in a fur-trimmed steel-blue cloak, shown walking, in the rig pose and running" width="100%">
+
+<sub>*Frostbound*'s hero, walking, in the rig pose and running. See it spin in the <a href="https://launch-kit-beta.vercel.app/?demo=1&play=1">auto demo</a>.</sub>
+
 ---
 
 <div align="center">

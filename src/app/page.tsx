@@ -136,7 +136,7 @@ export default function Home() {
       {/* floating glass nav, like the reference */}
       <nav className="safe-b pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-center px-4">
         <div className="pill pointer-events-auto flex items-center gap-1 rounded-2xl p-1.5">
-          <NavBtn active={screen === "store"} onClick={() => { blip.move(); go("store"); }} icon="▦" label="Store" />
+          <NavBtn active={screen === "store"} onClick={() => { blip.move(); go("store"); }} icon="▦" label="Styles" />
           <NavBtn active={screen === "insert"} onClick={() => { blip.move(); go("insert"); }} icon="▣" label="Insert" />
           <NavBtn active={screen === "kit"} disabled={!hasKit} onClick={() => { blip.move(); go("kit"); }} icon="⧗" label="My kit" />
           {screen === "kit" && (
