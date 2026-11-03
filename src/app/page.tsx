@@ -246,16 +246,16 @@ function StoreFloor({ genre, onPick, onStart }: { genre: Genre; onPick: (g: Genr
   return (
     <main className="relative pb-32">
       <div className="px-4 pt-3 text-center">
-        <h1 className="chroma font-display text-[2.1rem] leading-[0.95] font-extrabold tracking-tight">Choose your style.</h1>
-        <p className="mx-auto mt-2 max-w-[19rem] text-sm leading-snug text-white/75">
-          Get your logo, trailer, art and every Steam size in minutes. No design skills needed.
-        </p>
-        <p aria-hidden className="mt-2 flex justify-center gap-1.5 text-lg">
-          {["🎮", "🎧", "🧑‍💻", "👾", "👑", "📹", "🔥", "📼", "🎥", "🏆"].map((e, i) => (
+        <p aria-hidden className="mb-1.5 flex justify-center gap-2 text-xl">
+          {["🎮", "👾", "📹", "🎧"].map((e, i) => (
             <span key={e} className="float inline-block" style={{ animationDelay: `${i * 0.25}s` }}>
               {e}
             </span>
           ))}
+        </p>
+        <h1 className="chroma font-display text-[2.1rem] leading-[0.95] font-extrabold tracking-tight">Choose your style.</h1>
+        <p className="mx-auto mt-2 max-w-[19rem] text-sm leading-snug text-white/75">
+          Get your logo, trailer, art and every Steam size in minutes. No design skills needed.
         </p>
       </div>
 
