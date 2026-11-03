@@ -83,7 +83,8 @@
    "Relearn lost rune magic and craft your own spells",
    "Unleash dragon-blooded powers in fluid, weighty combat",
    "Forge your fate through choices that reshape the north"
-  ]
+  ],
+  "heroPrompt": "A hooded dragon-blooded exile, lean and weathered, wrapped in layered fur and travel-worn leather in steel blue and dark slate, a tattered cloak to the knees, ember-gold rune markings glowing faintly along the forearms and collarbone, sturdy fur-lined boots, a short rune-carved blade sheathed at the hip; painterly cinematic fantasy realism, standing in an A-pose."
  },
  "logo": "/demo/logo.png",
  "keyArt": "/demo/keyart.jpg",
@@ -129,5 +130,11 @@
   }
  ],
  "video": "/demo/sting.mp4",
- "trailer": "/demo/trailer.mp4"
+ "trailer": "/demo/trailer.mp4",
+ "hero": {
+  "viewer": "/demo/hero-walking.glb",
+  "rigged": "/demo/hero-rigged.glb",
+  "walking": "/demo/hero-walking.glb",
+  "running": "/demo/hero-running.glb"
+ }
 }
