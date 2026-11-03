@@ -72,4 +72,4 @@ If the live run is slow or a model refuses, switch tabs to the demo link and pre
 | Live app (access code PLAYER1) | [launch-kit-beta.vercel.app](https://launch-kit-beta.vercel.app) |
 | Stage-safe demo | [launch-kit-beta.vercel.app/?demo=1](https://launch-kit-beta.vercel.app/?demo=1) |
 | Kiosk mode (autoplays) | [launch-kit-beta.vercel.app/?demo=1&play=1](https://launch-kit-beta.vercel.app/?demo=1&play=1) |
-| Code | [github.com/meshi6/comfy-launch-kit](https://github.com/meshi6/comfy-launch-kit) |
+| Code | [github.com/meshi6/game-launch-kit-powered-by-comfy](https://github.com/meshi6/game-launch-kit-powered-by-comfy) |
