@@ -71,7 +71,8 @@ export async function asJpeg(buf: Buffer, maxWidth = 2048, quality = 86) {
 export async function asPng(buf: Buffer, maxWidth = 1600, trim = false) {
   // trim() strips the empty transparent border around a cut-out (cuts a 2.4 MB logo to a fraction)
   const trimmed = trim ? await sharp(buf).trim({ threshold: 10 }).toBuffer().catch(() => buf) : buf;
-  return sharp(trimmed).resize({ width: maxWidth, withoutEnlargement: true }).png({ compressionLevel: 9 }).toBuffer();
+  // palette PNG keeps alpha and cuts size ~5x; stays well under Vercel's 4.5 MB response cap
+  return sharp(trimmed).resize({ width: maxWidth, withoutEnlargement: true }).png({ compressionLevel: 9, palette: true, quality: 92, effort: 8 }).toBuffer();
 }
 
 /** Ask Claude for text; optionally pass images as data URLs. */
