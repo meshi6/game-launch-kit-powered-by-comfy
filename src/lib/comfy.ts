@@ -11,6 +11,8 @@ export const MODELS = {
   keyArt: "vertexai/gemini-3-pro-image",
   video: "byteplus/dreamina-seedance-2-0-fast-260128",
   sfx: "elevenlabs/eleven_sfx_v2",
+  hero3d: "meshy/meshy-7.1",
+  rig: "meshy/rigging",
 } as const;
 
 export function assertKey() {

@@ -20,6 +20,7 @@ Return ONLY a JSON object, no prose. It must be valid JSON: inside string values
   "stingPrompt": string,          // 5s camera motion + effects for an animated title reveal starting from the key art with logo (e.g. slow push-in, particles, light sweep, logo glints). Include the sound design in words
   "trailerPrompt": string,        // a 12-second game trailer as 4 numbered shots (~3s each): 1) atmospheric establishing shot of the world, 2) the hero in action, 3) the core gameplay fantasy at its most exciting, 4) a final beat that resolves on the title logo. Describe camera moves, action and music/sound. Original characters only
   "trailerLine": string,          // ONE short narrator line for the trailer, <= 10 words, punchy, no game title
+  "heroPrompt": string,           // the game's main character as ONE full-body figure for a 3D model, standing in an A-pose: body type, outfit, materials and colors, distinctive silhouette, in the art style. No background, no scene, no text, nothing held that hides the body. <= 500 characters. Original design
   "icons": [{"name": string, "prompt": string}],     // exactly 6 in-game UI/item icons that fit the game (e.g. health, currency, signature item, ability), each a single centered object
   "sfx": [{"name": string, "prompt": string, "seconds": number}], // exactly 3: "Title sting" (3-5s), "Menu select" (0.5-1s), "Level up" (1.5-3s). Describe the sound concretely
   "storeBlurb": string,           // 2-3 sentence Steam short description, punchy
