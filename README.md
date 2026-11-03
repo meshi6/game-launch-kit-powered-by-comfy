@@ -83,4 +83,4 @@ It's built to be model-agnostic:
 
 - **Every model is one line** in [`src/lib/comfy.ts`](src/lib/comfy.ts). Point a step at any model on Comfy Router, including open-weights models, and adjust that step's request in its route under `src/app/api/`.
 - **The ComfyUI nodes plug into any workflow.** Feed Store Capsules from the open-weights image nodes you already run locally. It composites all 10 store sizes on your own machine, with no API calls.
-- **The style guide is the glue.** Whatever models you choose, one art direction keeps every asset looking like one game.
+- **The style guide is the glue.** Whatever models you choose, one art direction keeps every asset looking like your game.
