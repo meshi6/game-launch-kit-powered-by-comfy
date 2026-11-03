@@ -237,11 +237,25 @@ function StoreFloor({ genre, onPick, onStart }: { genre: Genre; onPick: (g: Genr
     return () => el.removeEventListener("scroll", onScroll);
   }, [onPick]);
 
-  function scrollTo(i: number) {
+  function scrollTo(i: number, behavior: ScrollBehavior = "smooth") {
     const el = rail.current;
     const card = el?.querySelector<HTMLElement>("[data-card]");
-    if (el && card) el.scrollTo({ left: i * (card.offsetWidth + 16), behavior: "smooth" });
+    if (el && card) el.scrollTo({ left: i * (card.offsetWidth + 16), behavior });
   }
+
+  // ?aisle=<id> opens the store on that aisle (e.g. ?aisle=shooter), handy for links and screenshots
+  useEffect(() => {
+    const id = new URLSearchParams(location.search).get("aisle");
+    const i = GENRES.findIndex((g) => g.id === id);
+    if (i <= 0) return;
+    requestAnimationFrame(() => {
+      scrollTo(i, "auto");
+      last.current = i;
+      setPos(i);
+      onPick(GENRES[i]);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <main className="relative pb-32">

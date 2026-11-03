@@ -71,7 +71,7 @@ A live kit takes about 4 minutes, but its art lands in under a minute. So the sc
 5. **45–57 s, the trailer.** Switch to tab 2: "Here's a finished kit from earlier." Play the *Frostbound* trailer.
 6. **57–60 s, close.** Tap **Download**. "Ready to upload. Built for game enthusiasts who can make a game but can't design a store page."
 
-If the live run shows an error, stay on tab 2 for the whole pitch: press Start there and it replays a full kit in about 20 seconds. After the pitch, show the judges tab 1 again: by then its own sting and trailer will be done.
+If the live run shows an error, do the entire pitch on tab 2: press Start there and it replays a full kit in about 20 seconds. After the pitch, show the judges tab 1 again: by then its own sting and trailer will be done.
 
 ## Links
 
