@@ -12,7 +12,7 @@ To put a game on Steam you need about ten pieces of artwork at exact sizes, plus
 | --- | --- |
 | Hire an artist | Often hundreds of dollars and days to weeks of back-and-forth |
 | Do it themselves in Photoshop or Canva | Hours of resizing, and art that looks amateur |
-| Use AI tools one by one | Eight different tools and prompts, and results that don't match each other |
+| Use AI tools one by one | Seven different tools and prompts, and results that don't match each other |
 
 The store page is the first thing a player sees, and small versions of the art decide whether anyone clicks. A great game with a weak page gets skipped.
 
