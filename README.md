@@ -6,6 +6,8 @@
 
 🎮 **[Open the app →](https://launch-kit-beta.vercel.app)** (works best on a phone; access code: **PLAYER1**)
 
+▶️ **[Watch the auto demo →](https://launch-kit-beta.vercel.app/?demo=1&play=1)** (a full kit plays in about 20 seconds, no code needed)
+
 📹 **[See an example run, screen by screen →](docs/example-run/README.md)**
 
 🧩 **[Get the ComfyUI nodes →](https://github.com/meshi6/comfyui-launch-kit)** (Style Guide, Store Capsules and Legibility Check, for your own workflows)
