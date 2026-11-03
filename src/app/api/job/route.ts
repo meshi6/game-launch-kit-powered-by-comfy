@@ -22,11 +22,11 @@ type MeshyOut = {
 /** GET /api/job?model=…&id=… → { status, queuePosition? } or, when done, { status: "COMPLETED", data } */
 export async function GET(req: Request) {
   try {
-    assertKey();
     const url = new URL(req.url);
     const model = url.searchParams.get("model") ?? "";
     const id = url.searchParams.get("id");
     if (!ALLOWED.has(model) || !id) return Response.json({ error: "bad model or id" }, { status: 400 });
+    assertKey();
 
     const handle = comfy.models.handle(model, id);
     const st = await handle.status();

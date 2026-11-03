@@ -34,9 +34,9 @@ type SeedanceOut = { content?: { video_url?: string }; status?: string; error?: 
 /** Poll: GET /api/sting?id=... -> { status, videoUrl? } */
 export async function GET(req: Request) {
   try {
-    assertKey();
     const id = new URL(req.url).searchParams.get("id");
     if (!id) return Response.json({ error: "missing id" }, { status: 400 });
+    assertKey();
     const handle = comfy.models.handle(MODELS.video, id);
     const st = await handle.status();
     if (!st.completed) return Response.json({ status: st.status, queuePosition: st.queuePosition ?? null });
