@@ -27,7 +27,7 @@ Then you download it as a `.zip`, laid out by platform.
 npm install
 # .env.local
 COMFY_API_KEY=comfyui-...        # platform.comfy.org → API keys
-LAUNCH_PASSCODE=PLAYER1          # optional: gates /api/* for public demos
+LAUNCH_PASSCODE=choose-a-code     # optional: gates /api/* for public demos
 npm run dev -- -H 0.0.0.0        # open on your phone on the same Wi-Fi
 ```
 
