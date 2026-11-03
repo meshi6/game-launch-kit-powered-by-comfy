@@ -2,7 +2,7 @@
 
 <img src="docs/example-run/banner.jpg" alt="Launch Kit on a phone: the store, entering a game, loading, the finished kit and the store shelf" width="100%">
 
-**Your game's storefront from a few taps.** Built for the Comfy hackathon on [Comfy Router](https://docs.comfy.org/development/comfy-router/quickstart): 7 models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2, Seedance 2.0 Fast), all through the [Comfy API](https://comfy.org/platform/comfy-api/).
+**Your game's storefront from a few taps.** Built for the Comfy hackathon on [Comfy Router](https://docs.comfy.org/development/comfy-router/quickstart): 9 models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2, Seedance 2.0 Fast, Meshy 7.1, Meshy Rigging), all through the [Comfy API](https://comfy.org/platform/comfy-api/).
 
 🎮 **[Open the app →](https://launch-kit-beta.vercel.app)** (works best on a phone; access code: **PLAYER1**)
 
@@ -23,12 +23,13 @@ Walk into a digital game store, pick an aisle, type your game's name and pitch, 
 | Search-size legibility check (120×45) | `anthropic/claude-sonnet-5-5` (vision) |
 | 📼 Animated title sting with audio | `byteplus/dreamina-seedance-2-0-fast-260128` |
 | 🎥 12-second game trailer: multi-shot, music, narrator, ends on the logo | `byteplus/dreamina-seedance-2-0-fast-260128` |
+| 3D hero: textured, rigged, with walking and running animations (.glb) | `meshy/meshy-7.1` + `meshy/rigging` |
 
 🎥 Trailer for *Frostbound* (Fantasy RPG): *"What the cold buried, the blood remembers."*
 
 <img src="docs/example-run/trailer-frostbound.jpg" alt="Six frames from the Frostbound trailer: mountains at dawn, the exile at a runestone, the rune igniting, an ice beast, the ruins, the title card" width="100%">
 
-🔥 **The concept:** a single style guide generated first and fed into every model, so the logo, art, icons, sounds and video read as one game rather than seven AI outputs.
+🔥 **The concept:** a single style guide generated first and fed into every model, so the logo, art, icons, sounds and video read as one game rather than nine AI outputs.
 
 Then you download it as a `.zip`, laid out by platform.
 

@@ -12,7 +12,7 @@ To put a game on Steam you need about ten pieces of artwork at exact sizes, plus
 | --- | --- |
 | Hire an artist | Often hundreds of dollars and days to weeks of back-and-forth |
 | Do it themselves in Photoshop or Canva | Hours of resizing, and art that looks amateur |
-| Use AI tools one by one | Seven different tools and prompts, and results that don't match each other |
+| Use AI tools one by one | Nine different tools and prompts, and results that don't match each other |
 
 The store page is the first thing a player sees, and small versions of the art decide whether anyone clicks. A great game with a weak page gets skipped.
 
@@ -33,13 +33,14 @@ A few taps in, a ready-to-upload storefront out, downloaded as one zip sorted by
 | 3 sound effects: title sting, menu select, level up | Audio without a sound designer |
 | 5-second animated title sting with sound | A trailer opener or social clip |
 | 12-second game trailer: several shots, music, a narrator line, ends on the logo | A promo video without editing software or a video team |
+| 3D hero: textured, rigged, walking and running (.glb) | A playable character to drop into Unity, Godot, Blender or Roblox Studio |
 | Store description + 4 feature bullets | Copy ready to paste into Steam |
 
 It runs on a phone as a web app you can add to your home screen. The interface is a digital game store: you pick an aisle (open-world crime, military shooter, space strategy, block sandbox, fantasy RPG, retro arcade, or your own idea), and your kit fills a wall of TVs as each piece arrives.
 
 ## How it uses Comfy
 
-Seven models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2 and Seedance 2.0 Fast) from seven providers, all through **Comfy Router**, using the [Comfy API](https://comfy.org/platform/comfy-api/) and the Comfy TypeScript SDK. The style guide runs first. Five models then run in parallel, the store sizes are built on the phone, and the video goes last, using the finished store image as its first frame.
+Nine models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Banana Pro, Recraft V4.1 Vector, ElevenLabs SFX v2, Seedance 2.0 Fast, Meshy 7.1 and Meshy Rigging) from eight providers, all through **Comfy Router**, using the [Comfy API](https://comfy.org/platform/comfy-api/) and the Comfy TypeScript SDK. The style guide runs first. Five models then run in parallel, the store sizes are built on the phone, and the video goes last, using the finished store image as its first frame.
 
 | Step | Model (Comfy Router ID) | Time in our test |
 | --- | --- | --- |
@@ -52,6 +53,8 @@ Seven models (Claude Sonnet 5.5, Ideogram 4.5, Bria Remove Background, Nano Bana
 | Tiny-thumbnail check | `anthropic/claude-sonnet-5-5` (vision) | ~5 s |
 | Title sting video | `byteplus/dreamina-seedance-2-0-fast-260128` | 40–100 s |
 | Game trailer (12 s) | `byteplus/dreamina-seedance-2-0-fast-260128` | ~2–3 min |
+| 3D hero: sculpt + texture | `meshy/meshy-7.1` | 54 s + 37 s |
+| 3D hero: rig + animations | `meshy/rigging` | 29 s |
 
 The Comfy API key stays on the server; a short access code protects the public demo from spending credits. Prompts are written to keep every design original, so a user who types "like GTA" gets the genre and mood, not someone else's logo or characters.
 
@@ -66,7 +69,7 @@ A live kit takes about 4 minutes, but its art lands in under a minute. So the sc
 
 1. **Just before you speak:** press **Start** on tab 1, so the clock runs while you talk.
 2. **0–15 s, the problem.** "You finished your game. Now Steam wants ten pieces of art at exact sizes, a logo, an icon, store copy and a trailer. If you're not a designer, that's where games stall."
-3. **15–30 s, how it works.** Point at the loading bar and the TVs switching on. "A few taps. No prompts, no design tools. One art direction goes to seven Comfy models, so everything matches."
+3. **15–30 s, how it works.** Point at the loading bar and the TVs switching on. "A few taps. No prompts, no design tools. One art direction goes to nine Comfy models, so everything matches."
 4. **30–45 s, the art lands live.** The key art, logo and icons arrive on tab 1. Scroll the store shelf, play one sound button, and show the tiny-size score.
 5. **45–57 s, the trailer.** Switch to tab 2: "Here's a finished kit from earlier." Play the *Frostbound* trailer.
 6. **57–60 s, close.** Tap **Download**. "Ready to upload. Built for game enthusiasts who can make a game but can't design a store page."
