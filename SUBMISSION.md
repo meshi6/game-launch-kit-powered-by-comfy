@@ -57,15 +57,21 @@ The Comfy API key stays on the server; a short access code protects the public d
 
 ## 60-second demo script
 
-Start the live run in the first seconds so it builds while you talk. Keep the demo tab open as a backup: it looks identical and replays a finished kit in about 20 seconds with no API calls.
+A live kit takes about 4 minutes, but its art lands in under a minute. So the script shows the art being made live, then ends on a finished trailer from the demo tab.
 
-1. **0–10 s, the problem.** "You finished your game. Now Steam wants ten pieces of art at exact sizes, a logo, an icon and store copy. If you're not a designer, that's where games stall."
-2. **10–20 s, start it.** Swipe the TVs to an aisle, show the pre-filled game, press **Start**. "A few taps. No prompts, no design tools."
-3. **20–45 s, watch it fill.** Point at the loading bar and the TVs switching on. "One art direction goes to seven Comfy models, so everything matches." Play a sound button. Show the tiny-thumbnail score.
-4. **45–55 s, the payoff.** Scroll the store shelf, open one capsule full-screen, play the title sting.
-5. **55–60 s, close.** Tap **Download**. "Ready to upload. Built for the people who can make a game but can't design a store page."
+**Set up two tabs on the phone before you walk up:**
 
-If the live run is slow or a model refuses, switch tabs to the demo link and press Start there.
+- **Tab 1, live:** the app with *Iron Front* (or any game) typed in, one tap from Start.
+- **Tab 2, demo:** the `?demo=1` link, played through to Stage Clear, with the *Frostbound* trailer ready to play.
+
+1. **Just before you speak:** press **Start** on tab 1, so the clock runs while you talk.
+2. **0–15 s, the problem.** "You finished your game. Now Steam wants ten pieces of art at exact sizes, a logo, an icon, store copy and a trailer. If you're not a designer, that's where games stall."
+3. **15–30 s, how it works.** Point at the loading bar and the TVs switching on. "A few taps. No prompts, no design tools. One art direction goes to seven Comfy models, so everything matches."
+4. **30–45 s, the art lands live.** The key art, logo and icons arrive on tab 1. Scroll the store shelf, play one sound button, and show the tiny-size score.
+5. **45–57 s, the trailer.** Switch to tab 2: "Here's a finished kit from earlier." Play the *Frostbound* trailer.
+6. **57–60 s, close.** Tap **Download**. "Ready to upload. Built for game enthusiasts who can make a game but can't design a store page."
+
+If the live run shows an error, stay on tab 2 for the whole pitch: press Start there and it replays a full kit in about 20 seconds. After the pitch, show the judges tab 1 again: by then its own sting and trailer will be done.
 
 ## Links
 
