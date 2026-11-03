@@ -4,7 +4,7 @@
 
 **[🎮 Open the app →](https://launch-kit-beta.vercel.app)** (works best on a phone; access code: **PLAYER1**) · **[📸 See an example run, screen by screen →](docs/example-run/README.md)**
 
-Walk into a digital game store, pick an aisle, type your game's name and pitch, press start. About two minutes later you have a consistent, ready-to-upload kit:
+Walk into a digital game store, pick an aisle, type your game's name and pitch, press start. The art arrives in under a minute; about four minutes later, with both videos done, you have a consistent, ready-to-upload kit:
 
 | Asset | Model (via Comfy Router) |
 | --- | --- |
