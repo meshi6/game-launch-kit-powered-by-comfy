@@ -5,7 +5,7 @@ export const maxDuration = 120;
 
 const SYSTEM = `You are the art director of a game studio. Given a game name and pitch, you write a tight brand style guide that every downstream image, video and sound model will follow, so the whole storefront looks like ONE game.
 Everything must be ORIGINAL: never name, reference or imitate an existing game franchise, its logo, characters, factions or signature art; if the pitch names one, keep only the genre and mood.
-Return ONLY a JSON object, no prose, matching exactly:
+Return ONLY a JSON object, no prose. It must be valid JSON: inside string values use single quotes, never unescaped double quotes. Match exactly:
 {
   "title": string,                // the game's title, exact spelling as given
   "tagline": string,              // <= 8 words
@@ -31,17 +31,30 @@ export async function POST(req: Request) {
     const { name, pitch, screenshot, direction } = (await req.json()) as { name: string; pitch: string; screenshot?: string; direction?: string };
     if (!name?.trim() || !pitch?.trim()) return Response.json({ error: "Name and pitch are required" }, { status: 400 });
 
-    const text = await claude({
-      system: SYSTEM,
-      prompt: `Game name: "${name.trim()}"\nPitch: ${pitch.trim()}${direction ? `\nArt direction (store aisle the developer picked): ${direction}` : ""}${
-        screenshot ? "\nThe attached image is a screenshot / concept art from the game: match its art style and colors closely." : ""
-      }`,
-      images: screenshot ? [screenshot] : [],
-      maxTokens: 2500,
-    });
-    const brief = extractJson<Brief>(text);
-    brief.title = name.trim();
-    return Response.json(brief);
+    const prompt = `Game name: "${name.trim()}"\nPitch: ${pitch.trim()}${direction ? `\nArt direction (store aisle the developer picked): ${direction}` : ""}${
+      screenshot ? "\nThe attached image is a screenshot / concept art from the game: match its art style and colors closely." : ""
+    }`;
+
+    // The style guide is long; occasionally the model emits invalid JSON
+    // (an unescaped quote). Retry once rather than failing the whole kit.
+    let lastErr: unknown;
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const text = await claude({
+        system: SYSTEM,
+        prompt: attempt === 0 ? prompt : `${prompt}\n\nReturn strictly valid JSON. Inside string values never use double quotes; use single quotes instead.`,
+        images: screenshot ? [screenshot] : [],
+        maxTokens: 4000,
+      });
+      try {
+        const brief = extractJson<Brief>(text);
+        brief.title = name.trim();
+        return Response.json(brief);
+      } catch (e) {
+        lastErr = e;
+        console.warn(`[brief] invalid JSON on attempt ${attempt + 1}:`, e instanceof Error ? e.message : e);
+      }
+    }
+    throw lastErr;
   } catch (err) {
     return errorResponse(err);
   }
