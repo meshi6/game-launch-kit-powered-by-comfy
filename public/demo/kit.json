@@ -1,0 +1,130 @@
+{
+ "brief": {
+  "title": "Moss & Mortar",
+  "tagline": "Build together. Weather every storm.",
+  "genre": "Cozy co-op castle-builder",
+  "mood": "warm, whimsical, snug, hopeful, gentle",
+  "artStyle": "soft painterly storybook illustration, gouache and watercolor textures, rounded friendly shapes, gentle hand-inked outlines in warm brown, diffused golden-hour lighting, mossy greens, cream and pond-teal palette with peachy highlights",
+  "palette": [
+   {
+    "name": "Moss Green",
+    "hex": "#6B8F4E"
+   },
+   {
+    "name": "Lily Pad Teal",
+    "hex": "#3F8A8C"
+   },
+   {
+    "name": "Deep Pondwater",
+    "hex": "#24362F"
+   },
+   {
+    "name": "Cream Mortar",
+    "hex": "#F6EBD0"
+   },
+   {
+    "name": "Firefly Peach",
+    "hex": "#F2B26B"
+   }
+  ],
+  "fontVibe": "chunky hand-lettered storybook serif with wobbly rounded edges, letters look like stacked mossy stones with tiny leaf sprouts, ampersand shaped like a curled vine, cream fill with deep green outline",
+  "logoPrompt": "Hand-lettered game title logo reading \"Moss & Mortar\" in quotes exactly, centered, chunky rounded storybook lettering shaped like mossy stacked stones with cream fill, deep pond-green outline, small leaf sprouts and a curling vine ampersand, soft painterly texture, isolated on a flat solid plain white background, no scene, no other text",
+  "emblemPrompt": "Simple bold flat vector emblem of a cute round frog head wearing a tiny stone castle tower as a crown, moss-green and cream with deep pond-green outline and a peach accent, rounded shapes, centered, iconic, no text or letters",
+  "keyArtPrompt": "Cinematic wide key art, soft painterly storybook illustration, gouache and watercolor textures, rounded friendly shapes, warm golden-hour light: a team of cheerful frogs in tiny aprons and helmets stacking mossy stone walls on a lily-pad castle at the edge of a glowing pond, while a swirling autumn storm of rain and leaves gathers on the horizon, fireflies and warm lantern glow, mossy greens, cream and teal palette with peach highlights, calm misty empty sky in the center-upper area for a logo, no text, no letters, no logos",
+  "stingPrompt": "5 seconds: slow cinematic push-in on the key art as drifting leaves and glowing fireflies float across the frame, gentle rain ripples spread on the pond, a soft warm light sweep passes over the logo making it glint once, the storm clouds in the distance gently churn. Sound design: soft pond ambience with a few frog ribbits, a warm plucky ukulele and music-box melody, a satisfying stone-clack as the logo settles, ending on a gentle chime.",
+  "icons": [
+   {
+    "name": "Lily Heart",
+    "prompt": "Single centered game UI icon of a heart-shaped lily pad with a tiny pink blossom, soft painterly storybook style, rounded shapes, warm brown outline, mossy green and cream, transparent or plain background"
+   },
+   {
+    "name": "Pebble Coin",
+    "prompt": "Single centered game UI icon of a smooth round golden-cream pebble coin with a tiny frog stamp, soft painterly storybook style, rounded shapes, warm brown outline, plain background"
+   },
+   {
+    "name": "Mortar Trowel",
+    "prompt": "Single centered game UI icon of a small trowel with a wooden handle dabbed with cream mortar and a bit of moss, soft painterly storybook style, rounded shapes, warm brown outline, plain background"
+   },
+   {
+    "name": "Mossy Brick",
+    "prompt": "Single centered game UI icon of a chunky rounded stone brick covered in lush green moss and tiny mushrooms, soft painterly storybook style, warm brown outline, plain background"
+   },
+   {
+    "name": "Storm Shield",
+    "prompt": "Single centered game UI icon of a round shield made from a giant leaf with a teal raindrop emblem, soft painterly storybook style, rounded shapes, warm brown outline, plain background"
+   },
+   {
+    "name": "Firefly Lantern",
+    "prompt": "Single centered game UI icon of a little glass jar lantern with a glowing peach firefly inside and a twine handle, soft painterly storybook style, rounded shapes, warm brown outline, plain background"
+   }
+  ],
+  "sfx": [
+   {
+    "name": "Title sting",
+    "prompt": "Warm cozy title sting: a soft ribbit, a plucky ukulele and music-box arpeggio rising, a satisfying stone clack, ending on a gentle shimmering chime with light water droplets",
+    "seconds": 4
+   },
+   {
+    "name": "Menu select",
+    "prompt": "Short soft wooden bloop with a tiny water droplet plink, friendly and gentle",
+    "seconds": 0.7
+   },
+   {
+    "name": "Level up",
+    "prompt": "Joyful ascending xylophone and harp flourish with a happy double ribbit and sparkling chimes, warm and celebratory",
+    "seconds": 2.5
+   }
+  ],
+  "storeBlurb": "Rally your froggy friends and raise a castle from moss, mud and mortar! Work together to stack walls, set cozy defenses and shelter your pond kingdom from every storm the seasons throw at it.",
+  "features": [
+   "Build and rebuild your pond castle together in co-op",
+   "Defend against spring showers, summer squalls and winter freezes",
+   "Decorate with mossy, mushroomy, lantern-lit charm",
+   "Play with friends in relaxed, welcoming sessions"
+  ]
+ },
+ "logo": "/demo/logo.png",
+ "keyArt": "/demo/keyart.jpg",
+ "emblem": "/demo/emblem.svg",
+ "icons": [
+  {
+   "name": "Lily Heart",
+   "src": "/demo/icons/0.svg"
+  },
+  {
+   "name": "Pebble Coin",
+   "src": "/demo/icons/1.svg"
+  },
+  {
+   "name": "Mortar Trowel",
+   "src": "/demo/icons/2.svg"
+  },
+  {
+   "name": "Mossy Brick",
+   "src": "/demo/icons/3.svg"
+  },
+  {
+   "name": "Storm Shield",
+   "src": "/demo/icons/4.svg"
+  },
+  {
+   "name": "Firefly Lantern",
+   "src": "/demo/icons/5.svg"
+  }
+ ],
+ "sounds": [
+  {
+   "name": "Title sting",
+   "src": "/demo/sfx/0.mp3"
+  },
+  {
+   "name": "Menu select",
+   "src": "/demo/sfx/1.mp3"
+  },
+  {
+   "name": "Level up",
+   "src": "/demo/sfx/2.mp3"
+  }
+ ],
+ "video": "/demo/sting.mp4"
+}

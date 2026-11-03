@@ -10,6 +10,12 @@ import { buildZip } from "@/lib/zip";
 
 type Screen = "store" | "insert" | "kit";
 
+// The kit bundled in /public/demo (generated live during testing).
+const DEMO_GAME = {
+  name: "Moss & Mortar",
+  pitch: "A cozy co-op castle-builder where frogs defend their pond kingdom from seasonal storms.",
+};
+
 export default function Home() {
   const [screen, setScreen] = useState<Screen>("store");
   const [genre, setGenre] = useState<Genre>(GENRES[0]);
@@ -19,6 +25,7 @@ export default function Home() {
   const [shot, setShot] = useState<string>();
   const [zoom, setZoom] = useState<Composed>();
   const [zipping, setZipping] = useState(false);
+  const [demo, setDemo] = useState(false);
 
   const kit = useKit((id, ok) => {
     if (!ok) blip.back();
@@ -33,6 +40,18 @@ export default function Home() {
     const s = new URLSearchParams(location.search).get("screen");
     // eslint-disable-next-line react-hooks/set-state-in-effect
     if (s === "insert" || s === "kit") setScreen(s);
+    // ?demo=1: stage-safe mode. Press Start replays a pre-generated kit (no API calls).
+    if (new URLSearchParams(location.search).get("demo") === "1") {
+      setDemo(true);
+      setName(DEMO_GAME.name);
+      setPitch(DEMO_GAME.pitch);
+      // &play=1 starts the replay right away (kiosk screen at the booth)
+      if (new URLSearchParams(location.search).get("play") === "1") {
+        setScreen("kit");
+        kit.replay();
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Theme: aisle colors in the store, generated palette once a kit exists.
@@ -48,6 +67,7 @@ export default function Home() {
 
   function pickGenre(g: Genre) {
     setGenre(g);
+    if (demo) return; // keep the demo game's title/pitch on every aisle
     if (g.example.name && (!name || GENRES.some((x) => x.example.name === name))) {
       setName(g.example.name);
       setPitch(g.example.pitch);
@@ -59,7 +79,8 @@ export default function Home() {
     if (!name.trim() || !pitch.trim()) return;
     blip.start();
     go("kit");
-    kit.generate({ name, pitch, screenshot: shot, direction: genre.direction || undefined });
+    if (demo) kit.replay();
+    else kit.generate({ name, pitch, screenshot: shot, direction: genre.direction || undefined });
   }
 
   async function download() {

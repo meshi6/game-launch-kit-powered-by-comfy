@@ -37,6 +37,44 @@ async function post<T>(url: string, body: unknown): Promise<T> {
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const idle = () => Object.fromEntries(STEPS.map((s) => [s, { status: "idle" }])) as Record<StepId, StepState>;
 
+async function urlToDataUrl(src: string): Promise<string> {
+  const blob = await fetch(src).then((r) => r.blob());
+  return new Promise((res, rej) => {
+    const fr = new FileReader();
+    fr.onload = () => res(fr.result as string);
+    fr.onerror = rej;
+    fr.readAsDataURL(blob);
+  });
+}
+
+type Legible = { score: number; readable: boolean; tip: string; thumb: string };
+type DemoKit = {
+  brief: Brief;
+  logo: string;
+  keyArt: string;
+  emblem: string;
+  icons: { name: string; src: string }[];
+  sounds: { name: string; src: string }[];
+  video: string;
+};
+
+/** Build every store size on-device, then score the smallest one. */
+async function composeStore(b: Brief, lg?: string, art?: string, emb?: string) {
+  const assets = {
+    logo: lg ? await trimLogo(lg) : undefined,
+    keyArt: art ? await loadImage(art) : undefined,
+    emblem: emb ? await loadImage(svgToDataUrl(emb)) : undefined,
+  };
+  const out: Composed[] = [];
+  for (const c of CAPSULES) {
+    const r = await composeCapsule(c, assets, b);
+    if (r) out.push(r);
+  }
+  const small = out.find((c) => c.capsule.id === "steam-small");
+  const thumb = small ? await thumbnail(small.dataUrl) : undefined;
+  return { out, thumb };
+}
+
 export type KitInput = { name: string; pitch: string; screenshot?: string; direction?: string };
 
 export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
@@ -48,7 +86,7 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
   const [icons, setIcons] = useState<{ name: string; svg: string }[]>([]);
   const [sounds, setSounds] = useState<{ name: string; audio: string }[]>([]);
   const [capsules, setCapsules] = useState<Composed[]>([]);
-  const [legible, setLegible] = useState<{ score: number; readable: boolean; tip: string; thumb: string }>();
+  const [legible, setLegible] = useState<Legible>();
   const [video, setVideo] = useState<{ url?: string; status?: string }>({});
   const runId = useRef(0);
   const cb = useRef(onStepDone);
@@ -65,11 +103,11 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
     setIcons([]); setSounds([]); setCapsules([]); setLegible(undefined); setVideo({});
   }, []);
 
-  const generate = useCallback(async (input: KitInput) => {
+  /** Shared runner: marks a step running/ok/err and fires the step sound. */
+  const begin = useCallback(() => {
     reset();
     const my = ++runId.current;
     const alive = () => runId.current === my;
-
     async function step<T>(id: StepId, fn: () => Promise<T>): Promise<T | undefined> {
       mark(id, { status: "run", t0: Date.now(), error: undefined });
       try {
@@ -81,6 +119,11 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
         return undefined;
       }
     }
+    return { alive, step };
+  }, [mark, reset]);
+
+  const generate = useCallback(async (input: KitInput) => {
+    const { alive, step } = begin();
 
     const b = await step("brief", () => post<Brief>("/api/brief", input));
     if (!b || !alive()) return;
@@ -105,22 +148,11 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
     if (!alive() || (!art && !lg)) return;
 
     const composed = await step("store", async () => {
-      const assets = {
-        logo: lg ? await trimLogo(lg) : undefined,
-        keyArt: art ? await loadImage(art) : undefined,
-        emblem: emb ? await loadImage(svgToDataUrl(emb)) : undefined,
-      };
-      const out: Composed[] = [];
-      for (const c of CAPSULES) {
-        const r = await composeCapsule(c, assets, b);
-        if (r) out.push(r);
-      }
+      const { out, thumb } = await composeStore(b, lg, art, emb);
       if (alive()) setCapsules(out);
-      const small = out.find((c) => c.capsule.id === "steam-small");
-      if (small) {
-        const t = await thumbnail(small.dataUrl);
-        post<{ score: number; readable: boolean; tip: string }>("/api/legibility", { title: b.title, thumb: t.big })
-          .then((r) => alive() && setLegible({ ...r, thumb: t.small }))
+      if (thumb) {
+        post<Omit<Legible, "thumb">>("/api/legibility", { title: b.title, thumb: thumb.big })
+          .then((r) => alive() && setLegible({ ...r, thumb: thumb.small }))
           .catch(() => {});
       }
       return out;
@@ -144,7 +176,60 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
       }
       throw new Error("Timed out");
     });
-  }, [mark, reset]);
+  }, [begin]);
 
-  return { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video, generate, reset };
+  /**
+   * Stage-safe replay of a pre-generated kit (public/demo). Same screens, sounds
+   * and on-device compositing as a live run, no API calls, ~15 seconds.
+   */
+  const replay = useCallback(async () => {
+    const { alive, step } = begin();
+    const m = (await fetch("/demo/kit.json").then((r) => r.json())) as DemoKit;
+    const wait = <T,>(ms: number, fn: () => Promise<T>) => sleep(ms).then(fn);
+
+    const b = await step("brief", () => wait(1800, async () => m.brief));
+    if (!b || !alive()) return;
+    setBrief(b);
+
+    const logoP = step("logo", () => wait(4300, () => urlToDataUrl(m.logo)));
+    const artP = step("keyart", () => wait(5400, () => urlToDataUrl(m.keyArt)));
+    const embP = step("emblem", () => wait(3200, () => fetch(m.emblem).then((r) => r.text())));
+    step("icons", () => wait(4800, async () => {
+      const list = await Promise.all(m.icons.map(async (i) => ({ name: i.name, svg: await fetch(i.src).then((r) => r.text()) })));
+      if (alive()) setIcons(list);
+    }));
+    step("sfx", () => wait(2400, async () => {
+      const list = await Promise.all(m.sounds.map(async (s) => ({ name: s.name, audio: await urlToDataUrl(s.src) })));
+      if (alive()) setSounds(list);
+    }));
+    logoP.then((v) => alive() && v && setLogo(v));
+    artP.then((v) => alive() && v && setKeyArt(v));
+    embP.then((v) => alive() && v && setEmblem(v));
+
+    const [lg, art, emb] = await Promise.all([logoP, artP, embP]);
+    if (!alive()) return;
+    await step("store", async () => {
+      const { out, thumb } = await composeStore(b, lg, art, emb);
+      if (alive()) setCapsules(out);
+      if (thumb) {
+        sleep(1200).then(() => alive() && setLegible({
+          score: 8,
+          readable: true,
+          tip: "Large, high-contrast lettering survives the 120×45 search size. A slightly darker outline on the ampersand would make it pop more.",
+          thumb: thumb.small,
+        }));
+      }
+    });
+    if (!alive()) return;
+    step("sting", async () => {
+      for (const s of ["Queue #1", "Rendering", "Rendering"]) {
+        if (!alive()) return;
+        setVideo({ status: s });
+        await sleep(2200);
+      }
+      if (alive()) setVideo({ url: m.video, status: "COMPLETED" });
+    });
+  }, [begin]);
+
+  return { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video, generate, replay, reset };
 }
