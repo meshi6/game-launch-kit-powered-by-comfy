@@ -4,7 +4,7 @@ Launch Kit gives non-technical game enthusiasts a storefront from one sentence i
 
 ## Who it's for, and why it matters
 
-**Launch Kit is for game makers who are not designers**: solo developers, students, game-jam teams, hobbyists, and artists who build in tools like Roblox, RPG Maker or Godot. They can finish a game. What stops them is the store page.
+**Launch Kit is for game makers who are not designers**: solo developers, students, game-jam teams, hobbyists, and artists who build in Roblox, RPG Maker or Godot. They can finish a game. What stops them is the store page.
 
 To put a game on Steam you need about ten pieces of artwork at exact sizes, plus a logo, key art, an icon and store text. For most small teams that means one of three bad options:
 
