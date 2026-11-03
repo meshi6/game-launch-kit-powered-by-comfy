@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CAPSULES, type Brief } from "./types";
 import { composeCapsule, loadImage, svgToDataUrl, thumbnail, trimLogo, type Composed } from "./compose";
 
-export type StepId = "brief" | "logo" | "keyart" | "emblem" | "icons" | "sfx" | "store" | "sting" | "trailer";
+export type StepId = "brief" | "logo" | "keyart" | "emblem" | "icons" | "sfx" | "store" | "sting" | "trailer" | "hero";
 export type StepState = { status: "idle" | "run" | "ok" | "err"; error?: string; t0?: number; t1?: number };
 
 export const STEP_LABEL: Record<StepId, string> = {
@@ -16,6 +16,7 @@ export const STEP_LABEL: Record<StepId, string> = {
   store: "Store sizes + legibility",
   sting: "Title sting · Seedance",
   trailer: "Game trailer · Seedance",
+  hero: "3D hero · Meshy",
 };
 export const STEPS = Object.keys(STEP_LABEL) as StepId[];
 
@@ -36,6 +37,34 @@ async function post<T>(url: string, body: unknown): Promise<T> {
   return j as T;
 }
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+export type Hero3D = { status?: string; viewer?: string; rigged?: string; walking?: string; running?: string };
+
+/** Route a provider-hosted GLB through /api/glb (the hosts send no CORS headers). */
+export function glbProxy(url: string): string {
+  let pass = "";
+  try {
+    pass = localStorage.getItem(PASS_KEY) ?? "";
+  } catch {}
+  return `/api/glb?u=${encodeURIComponent(url)}${pass ? `&pass=${encodeURIComponent(pass)}` : ""}`;
+}
+
+type JobData = {
+  id?: string;
+  result?: { rigged_character_glb_url?: string; basic_animations?: { walking_glb_url?: string; running_glb_url?: string } };
+};
+
+/** Poll any queued Router job (Meshy stages) through /api/job. */
+async function pollJob(model: string, requestId: string, alive: () => boolean): Promise<JobData> {
+  for (let i = 0; i < 150 && alive(); i++) {
+    await sleep(6000);
+    const r = await fetch(`/api/job?model=${encodeURIComponent(model)}&id=${encodeURIComponent(requestId)}`, { headers: passHeader() }).then((x) => x.json());
+    if (r.status === "FAILED") throw new Error(r.error ?? "3D generation failed");
+    if (r.error) throw new Error(r.error);
+    if (r.status === "COMPLETED") return r.data as JobData;
+  }
+  throw new Error("Timed out");
+}
 
 /** Poll a queued Seedance request until it finishes; reports queue/render status. */
 async function pollVideo(requestId: string, alive: () => boolean, onStatus: (s: string) => void): Promise<string> {
@@ -71,6 +100,7 @@ type DemoKit = {
   sounds: { name: string; src: string }[];
   video: string;
   trailer?: string;
+  hero?: { viewer: string; rigged?: string; walking?: string; running?: string };
 };
 
 /** Build every store size on-device, then score the smallest one. */
@@ -104,6 +134,7 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
   const [legible, setLegible] = useState<Legible>();
   const [video, setVideo] = useState<{ url?: string; status?: string }>({});
   const [trailer, setTrailer] = useState<{ url?: string; status?: string }>({});
+  const [hero, setHero] = useState<Hero3D>({});
   const runId = useRef(0);
   const cb = useRef(onStepDone);
   useEffect(() => {
@@ -116,7 +147,7 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
     runId.current++;
     setSteps(idle());
     setBrief(undefined); setLogo(undefined); setKeyArt(undefined); setEmblem(undefined);
-    setIcons([]); setSounds([]); setCapsules([]); setLegible(undefined); setVideo({}); setTrailer({});
+    setIcons([]); setSounds([]); setCapsules([]); setLegible(undefined); setVideo({}); setTrailer({}); setHero({});
   }, []);
 
   /** Shared runner: marks a step running/ok/err and fires the step sound. */
@@ -144,6 +175,28 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
     const b = await step("brief", () => post<Brief>("/api/brief", input));
     if (!b || !alive()) return;
     setBrief(b);
+
+    step("hero", async () => {
+      const run = async (stage: "preview" | "refine" | "rig", label: string, taskId?: string) => {
+        if (alive()) setHero((h) => ({ ...h, status: label }));
+        const { requestId, model } = await post<{ requestId: string; model: string }>("/api/hero", { brief: b, stage, taskId });
+        return pollJob(model, requestId, alive);
+      };
+      const preview = await run("preview", "Sculpting · 1/3");
+      const refined = await run("refine", "Painting · 2/3", preview.id);
+      const rigged = await run("rig", "Rigging · 3/3", refined.id);
+      const r = rigged.result ?? {};
+      const walking = r.basic_animations?.walking_glb_url;
+      const viewer = walking ?? r.rigged_character_glb_url;
+      if (!viewer) throw new Error("No 3D model returned");
+      if (alive()) setHero({
+        status: "COMPLETED",
+        viewer: glbProxy(viewer),
+        rigged: r.rigged_character_glb_url && glbProxy(r.rigged_character_glb_url),
+        walking: walking && glbProxy(walking),
+        running: r.basic_animations?.running_glb_url && glbProxy(r.basic_animations.running_glb_url),
+      });
+    });
 
     const logoP = step("logo", async () => (await post<{ logo: string }>("/api/logo", b)).logo);
     const artP = step("keyart", async () => (await post<{ keyArt: string }>("/api/keyart", { brief: b, screenshot: input.screenshot })).keyArt);
@@ -235,6 +288,17 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
       }
     });
     if (!alive()) return;
+    if (m.hero) {
+      const h = m.hero;
+      step("hero", async () => {
+        for (const st of ["Sculpting · 1/3", "Painting · 2/3", "Rigging · 3/3"]) {
+          if (!alive()) return;
+          setHero({ status: st });
+          await sleep(2600);
+        }
+        if (alive()) setHero({ status: "COMPLETED", ...h });
+      });
+    }
     if (m.trailer) {
       const trailerUrl = m.trailer;
       step("trailer", async () => {
@@ -256,5 +320,5 @@ export function useKit(onStepDone?: (id: StepId, ok: boolean) => void) {
     });
   }, [begin]);
 
-  return { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video, trailer, generate, replay, reset };
+  return { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video, trailer, hero, generate, replay, reset };
 }

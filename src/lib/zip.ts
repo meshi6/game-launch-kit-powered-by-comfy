@@ -16,6 +16,7 @@ export async function buildZip(kit: {
   sounds: { name: string; audio: string }[];
   videoUrl?: string;
   trailerUrl?: string;
+  hero?: { rigged?: string; walking?: string; running?: string };
 }) {
   const { brief } = kit;
   const zip = new JSZip();
@@ -46,7 +47,7 @@ ${brief.features.map((f) => `- ${f}`).join("\n")}
 - \`store/\` Steam, itch.io and mobile assets at exact sizes
 - \`ui-icons/\` vector in-game icons
 - \`audio/\` sound kit
-${kit.videoUrl || kit.trailerUrl ? "- `video/` animated title sting and game trailer\n" : ""}
+${kit.videoUrl || kit.trailerUrl ? "- `video/` animated title sting and game trailer\n" : ""}${kit.hero?.rigged ? "- `3d/` rigged hero (.glb) with walking and running animations\n" : ""}
 Generated with Launch Kit on Comfy Router. Steam requires AI-generated content to be disclosed in the content survey.
 `,
   );
@@ -76,6 +77,17 @@ Generated with Launch Kit on Comfy Router. Steam requires AI-generated content t
       root.folder("video")!.file(`${name}.mp4`, await r.arrayBuffer());
     } catch {
       root.folder("video")!.file(`${name}-url.txt`, url + "\n(Link expires; download it soon.)\n");
+    }
+  }
+
+  for (const [url, name] of [[kit.hero?.rigged, "hero-rigged"], [kit.hero?.walking, "hero-walking"], [kit.hero?.running, "hero-running"]] as const) {
+    if (!url) continue;
+    try {
+      const r = await fetch(url);
+      if (!r.ok) throw new Error();
+      root.folder("3d")!.file(`${name}.glb`, await r.arrayBuffer());
+    } catch {
+      root.folder("3d")!.file(`${name}-url.txt`, url + "\n");
     }
   }
 

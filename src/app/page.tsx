@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Channel, Crt, Static } from "@/components/Crt";
+import { ModelViewer } from "@/components/ModelViewer";
 import { GENRES, type Genre } from "@/lib/genres";
 import { blip, setMuted } from "@/lib/blips";
 import { shrinkUpload, svgToDataUrl, type Composed } from "@/lib/compose";
@@ -90,7 +91,7 @@ export default function Home() {
     blip.select();
     setZipping(true);
     try {
-      const blob = await buildZip({ brief: kit.brief, logo: kit.logo, keyArt: kit.keyArt, emblemSvg: kit.emblem, capsules: kit.capsules, icons: kit.icons, sounds: kit.sounds, videoUrl: kit.video.url, trailerUrl: kit.trailer.url });
+      const blob = await buildZip({ brief: kit.brief, logo: kit.logo, keyArt: kit.keyArt, emblemSvg: kit.emblem, capsules: kit.capsules, icons: kit.icons, sounds: kit.sounds, videoUrl: kit.video.url, trailerUrl: kit.trailer.url, hero: kit.hero });
       const file = new File([blob], `${kit.brief.title.replace(/\W+/g, "-")}-launch-kit.zip`, { type: "application/zip" });
       if (navigator.canShare?.({ files: [file] })) {
         await navigator.share({ files: [file], title: `${kit.brief.title} launch kit` }).catch(() => {});
@@ -431,7 +432,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 /* ================= KIT WALL ================= */
 
 function KitWall({ kit, onZoom }: { kit: ReturnType<typeof useKit>; onZoom: (c: Composed) => void }) {
-  const { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video, trailer } = kit;
+  const { steps, brief, logo, keyArt, emblem, icons, sounds, capsules, legible, video, trailer, hero: hero3d } = kit;
   const hero = capsules.find((c) => c.capsule.id === "steam-main");
   const doneCount = STEPS.filter((s) => steps[s].status === "ok" || steps[s].status === "err").length;
   const loading = STEPS.some((s) => steps[s].status === "run");
@@ -480,7 +481,7 @@ function KitWall({ kit, onZoom }: { kit: ReturnType<typeof useKit>; onZoom: (c: 
       {(loading || STEPS.some((s) => steps[s].status === "err")) && (
         <div className="pill mt-5 rounded-2xl p-3">
           <ul className="space-y-1.5">
-            {STEPS.map((s) => <StepRow key={s} label={STEP_LABEL[s]} st={steps[s]} extra={s === "sting" ? video.status : s === "trailer" ? trailer.status : undefined} />)}
+            {STEPS.map((s) => <StepRow key={s} label={STEP_LABEL[s]} st={steps[s]} extra={s === "sting" ? video.status : s === "trailer" ? trailer.status : s === "hero" ? hero3d.status : undefined} />)}
           </ul>
         </div>
       )}
@@ -580,6 +581,38 @@ function KitWall({ kit, onZoom }: { kit: ReturnType<typeof useKit>; onZoom: (c: 
             <span className="text-brand">⇩</span> Save trailer (.mp4)
           </a>
         )}
+      </Shelf>
+
+      {/* 3D hero */}
+      <Shelf title="3D hero" aside="rigged · walks · .glb">
+        <Crt glow={glow} ratio="1/1" reflect={false}>
+          <div className="absolute inset-0" style={{ background: `radial-gradient(70% 60% at 50% 70%, ${glow ?? "#ff5c39"}55, #07060a 75%)` }} />
+          {hero3d.viewer ? (
+            <div className="tune absolute inset-0">
+              <ModelViewer src={hero3d.viewer} alt={`${brief?.title ?? "Game"} hero, 3D`} />
+            </div>
+          ) : steps.hero.status === "err" ? (
+            <Err msg={steps.hero.error} />
+          ) : (
+            <div className="absolute inset-0 grid place-items-center">
+              <span className="hud blink rounded bg-black/60 px-2 py-1 text-lg">
+                {steps.hero.status === "run" ? `${hero3d.status ?? "Starting"} · ~5–8 min` : "Waits for style guide"}
+              </span>
+            </div>
+          )}
+        </Crt>
+        {hero3d.viewer && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {([["Rigged", hero3d.rigged], ["Walking", hero3d.walking], ["Running", hero3d.running]] as const).map(([label, url]) =>
+              url ? (
+                <a key={label} href={url} download={`${(brief?.title ?? "hero").replace(/\W+/g, "-")}-${label.toLowerCase()}.glb`} className="pill hud inline-flex items-center gap-2 rounded-xl px-3 py-2 text-base">
+                  <span className="text-brand">⇩</span> {label} .glb
+                </a>
+              ) : null,
+            )}
+          </div>
+        )}
+        {hero3d.viewer && <p className="mt-2 text-xs text-white/60">Drag to spin. Drop the .glb into Unity, Godot, Blender or Roblox Studio.</p>}
       </Shelf>
 
       {/* store assets */}
