@@ -246,10 +246,9 @@ function StoreFloor({ genre, onPick, onStart }: { genre: Genre; onPick: (g: Genr
   return (
     <main className="relative pb-32">
       <div className="px-4 pt-3 text-center">
-        <p className="hud text-lg text-muted">Welcome to the store</p>
-        <h1 className="chroma font-display text-[2.1rem] leading-[0.95] font-extrabold tracking-tight">Pick an aisle.</h1>
+        <h1 className="chroma font-display text-[2.1rem] leading-[0.95] font-extrabold tracking-tight">Choose your style.</h1>
         <p className="mx-auto mt-2 max-w-[19rem] text-sm leading-snug text-white/75">
-          Made a game but can&apos;t design a store page? Get your logo, art and every Steam size in about a minute, plus a trailer. No design skills needed.
+          Get your logo, trailer, art and every Steam size in minutes. No design skills needed.
         </p>
       </div>
 
