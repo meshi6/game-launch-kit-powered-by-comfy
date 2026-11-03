@@ -250,6 +250,13 @@ function StoreFloor({ genre, onPick, onStart }: { genre: Genre; onPick: (g: Genr
         <p className="mx-auto mt-2 max-w-[19rem] text-sm leading-snug text-white/75">
           Get your logo, trailer, art and every Steam size in minutes. No design skills needed.
         </p>
+        <p aria-hidden className="mt-2 flex justify-center gap-1.5 text-lg">
+          {["🎮", "🎧", "🧑‍💻", "👾", "👑", "📹", "🔥", "📼", "🎥", "🏆"].map((e, i) => (
+            <span key={e} className="float inline-block" style={{ animationDelay: `${i * 0.25}s` }}>
+              {e}
+            </span>
+          ))}
+        </p>
       </div>
 
       {/* curved wall of TVs */}
