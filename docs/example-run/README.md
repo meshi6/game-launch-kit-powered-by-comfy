@@ -101,6 +101,6 @@ iron-front-launch-kit/
 
 <div align="center">
 
-**Try it yourself** · [Live app](https://launch-kit-beta.vercel.app) (access code on request) · [Stage-safe demo](https://launch-kit-beta.vercel.app/?demo=1) · [Back to the project](../../README.md)
+**Try it yourself** · [Live app](https://launch-kit-beta.vercel.app) (access code PLAYER1) · [Stage-safe demo](https://launch-kit-beta.vercel.app/?demo=1) · [Back to the project](../../README.md)
 
 </div>
