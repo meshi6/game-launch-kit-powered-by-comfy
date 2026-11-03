@@ -99,11 +99,17 @@ iron-front-launch-kit/
 
 ## 5 · New: the game trailer
 
-Added after this run: every kit now also gets a **12-second trailer** with several shots, trailer music, a narrator line written for the game, and the title logo at the end. Here is the one Launch Kit made for *Frostbound* (Fantasy RPG aisle). The narrator says *"What the cold buried, the blood remembers."*
+Added after this run: every kit now also gets a **12-second trailer** with several shots, trailer music, a narrator line written for the game, and the title logo at the end. Here are two. First, the one Launch Kit made for *Frostbound* (Fantasy RPG aisle). The narrator says *"What the cold buried, the blood remembers."*
 
 <img src="trailer-frostbound.jpg" alt="Six frames from the Frostbound trailer: mountains at dawn, the exile at a runestone, the rune igniting, an ice beast, the ruins, the title card" width="100%">
 
 <sub>Seedance 2.0 Fast, about 2–3 minutes, using the kit's key art and logo as references. See it play in the <a href="https://launch-kit-beta.vercel.app/?demo=1&play=1">auto demo</a>.</sub>
+
+A second one, from a different aisle and style: *Sunset Syndicate* (Open-World Crime), with the narrator line *"In this city, family is the only getaway."*
+
+<img src="trailer-sunset-syndicate.jpg" alt="Six frames from the Sunset Syndicate trailer: neon coastal city at sunset, the siblings in the getaway car, the car at a beach club, a chase under a striped sun, the title card" width="100%">
+
+<sub>Same pipeline, same model. Each trailer follows its own kit's style guide: pixel-poster neon here, painterly ice above.</sub>
 
 ---
 
