@@ -82,3 +82,4 @@ If the live run shows an error, do the entire pitch on tab 2: press Start there 
 | Kiosk mode (autoplays) | [launch-kit-beta.vercel.app/?demo=1&play=1](https://launch-kit-beta.vercel.app/?demo=1&play=1) |
 | Code | [github.com/meshi6/game-launch-kit-powered-by-comfy](https://github.com/meshi6/game-launch-kit-powered-by-comfy) |
 | Example run, screen by screen | [docs/example-run](https://github.com/meshi6/game-launch-kit-powered-by-comfy/blob/main/docs/example-run/README.md) |
+| ComfyUI node pack (Style Guide, Store Capsules, Legibility Check) | [github.com/meshi6/comfyui-launch-kit](https://github.com/meshi6/comfyui-launch-kit) |
