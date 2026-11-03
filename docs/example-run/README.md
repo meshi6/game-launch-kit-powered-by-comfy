@@ -1,19 +1,3 @@
-## 🎥 The trailers it makes
-
-Every kit comes with a **12-second trailer**: several shots, trailer music, a narrator line written for the game, and the title logo at the end. Two examples from different aisles:
-
-**Frostbound** (Fantasy RPG): *"What the cold buried, the blood remembers."*
-
-<img src="trailer-frostbound.jpg" alt="Six frames from the Frostbound trailer: mountains at dawn, the exile at a runestone, the rune igniting, an ice beast, the ruins, the title card" width="100%">
-
-**Sunset Syndicate** (Open-World Crime): *"In this city, family is the only getaway."*
-
-<img src="trailer-sunset-syndicate.jpg" alt="Six frames from the Sunset Syndicate trailer: neon coastal city at sunset, the siblings in the getaway car, the car at a beach club, a chase under a striped sun, the title card" width="100%">
-
-<sub>Seedance 2.0 Fast, about 2–3 minutes, using each kit's key art and logo as references, so every trailer follows its own style guide. See one play in the <a href="https://launch-kit-beta.vercel.app/?demo=1&play=1">auto demo</a>.</sub>
-
----
-
 <div align="center">
 
 <img src="banner.jpg" alt="Launch Kit on a phone: store, game entry, loading, finished kit, store shelf" width="100%">
@@ -112,6 +96,20 @@ iron-front-launch-kit/
 </td>
 </tr>
 </table>
+
+## 5 · The trailer
+
+Last, once the key art and logo exist, the kit gets a **12-second trailer** built from them: several shots, trailer music, a narrator line written for the game, and the title logo at the end. Two examples from different aisles:
+
+**Frostbound** (Fantasy RPG): *"What the cold buried, the blood remembers."*
+
+<img src="trailer-frostbound.jpg" alt="Six frames from the Frostbound trailer: mountains at dawn, the exile at a runestone, the rune igniting, an ice beast, the ruins, the title card" width="100%">
+
+**Sunset Syndicate** (Open-World Crime): *"In this city, family is the only getaway."*
+
+<img src="trailer-sunset-syndicate.jpg" alt="Six frames from the Sunset Syndicate trailer: neon coastal city at sunset, the siblings in the getaway car, the car at a beach club, a chase under a striped sun, the title card" width="100%">
+
+<sub>Seedance 2.0 Fast, about 2–3 minutes, using each kit's key art and logo as references, so every trailer follows its own style guide. See one play in the <a href="https://launch-kit-beta.vercel.app/?demo=1&play=1">auto demo</a>.</sub>
 
 ---
 
