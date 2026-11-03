@@ -68,8 +68,17 @@ export function Static({ tint = "#ffffff", label }: { tint?: string; label?: str
 }
 
 /** Genre "channel" art made of pure CSS, so the store works before any generation. */
-export function Channel({ colors, name }: { colors: [string, string]; name: string }) {
+export function Channel({ colors, name, art }: { colors: [string, string]; name: string; art?: string }) {
   const [a, b] = colors;
+  if (art) {
+    return (
+      <div className="absolute inset-0 overflow-hidden bg-black">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={art} alt="" className="h-full w-full object-cover" loading="eager" decoding="async" />
+        <span className="hud absolute left-[7%] top-[7%] rounded bg-black/40 px-1.5 py-0.5 text-sm text-white/85">CH {name.length.toString().padStart(2, "0")}</span>
+      </div>
+    );
+  }
   return (
     <div className="absolute inset-0 overflow-hidden" style={{ background: `radial-gradient(120% 90% at 50% 110%, ${a} 0%, #120c1c 55%, #050308 100%)` }}>
       {/* horizon sun */}

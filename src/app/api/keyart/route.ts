@@ -18,7 +18,7 @@ export async function POST(req: Request) {
       parts.push({ inlineData: { mimeType, data: dataUrlToBuffer(screenshot).toString("base64") } });
     }
     parts.push({
-      text: `Key art for the video game "${brief.title}" (${brief.genre}). ${brief.keyArtPrompt}. Style: ${brief.artStyle}. Mood: ${brief.mood}. Dominant palette: ${colors}. Cinematic wide composition, premium store-page quality. Leave clean negative space in the upper-center for a title logo.${
+      text: `Key art for the video game "${brief.title}" (${brief.genre}). ${brief.keyArtPrompt}. Style: ${brief.artStyle}. Mood: ${brief.mood}. Dominant palette: ${colors}. Cinematic wide composition, premium store-page quality. Keep the upper-center calm (open sky or soft background, never a box, panel or frame) so a title logo can sit there. All characters are original designs that do not resemble any existing game franchise.${
         screenshot ? " Match the attached game screenshot's characters and art style." : ""
       } ABSOLUTELY NO text, letters, numbers, logos, watermarks or UI.`,
     });

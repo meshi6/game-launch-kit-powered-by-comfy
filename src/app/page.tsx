@@ -250,7 +250,7 @@ function StoreFloor({ genre, onPick, onStart }: { genre: Genre; onPick: (g: Genr
                 }}
               >
                 <Crt glow={g.colors[0]} title={g.name} subtitle={g.blurb} onClick={() => (Math.round(pos) === i ? onStart() : scrollTo(i))}>
-                  {g.id === "own" ? <Static tint={g.colors[1]} label="No signal" /> : <Channel colors={g.colors} name={g.name} />}
+                  {g.id === "own" ? <Static tint={g.colors[1]} label="No signal" /> : <Channel colors={g.colors} name={g.name} art={g.art} />}
                 </Crt>
               </div>
             );
@@ -314,7 +314,7 @@ function Insert(p: {
           ) : p.genre.id === "own" ? (
             <Static tint={p.genre.colors[1]} />
           ) : (
-            <Channel colors={p.genre.colors} name={p.genre.name} />
+            <Channel colors={p.genre.colors} name={p.genre.name} art={p.genre.art} />
           )}
           <div className="absolute inset-0 grid place-items-center p-6 text-center">
             <div>

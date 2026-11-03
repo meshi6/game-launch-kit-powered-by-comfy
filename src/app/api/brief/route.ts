@@ -4,6 +4,7 @@ import type { Brief } from "@/lib/types";
 export const maxDuration = 120;
 
 const SYSTEM = `You are the art director of an indie game studio. Given a game name and pitch, you write a tight brand style guide that every downstream image, video and sound model will follow, so the whole storefront looks like ONE game.
+Everything must be ORIGINAL: never name, reference or imitate an existing game franchise, its logo, characters, factions or signature art; if the pitch names one, keep only the genre and mood.
 Return ONLY a JSON object, no prose, matching exactly:
 {
   "title": string,                // the game's title, exact spelling as given
