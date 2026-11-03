@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Launch Kit 🕹️
 
-## Getting Started
+**Your indie game's whole storefront from one sentence.** Built for the Comfy hackathon on [Comfy Router](https://docs.comfy.org/development/comfy-router/quickstart): 8 models, 1 API key.
 
-First, run the development server:
+Walk into a retro game store, pick an aisle, type your game's name and pitch, press start. About two minutes later you have a consistent, ready-to-upload kit:
+
+| Asset | Model (via Comfy Router) |
+| --- | --- |
+| Style guide: palette, art direction, store copy | `anthropic/claude-sonnet-5-5` |
+| Title logo, cut out to a transparent PNG | `ideogram/ideogram-4-5` + `bria/image-edit-remove-background` |
+| Key art (optionally matched to your screenshot) | `vertexai/gemini-3-pro-image` (Nano Banana Pro) |
+| App emblem + 6 in-game UI icons (SVG) | `recraft/recraftv4_1_vector` |
+| Sound kit: title sting, menu select, level up | `elevenlabs/eleven_sfx_v2` |
+| Every Steam capsule size, itch.io cover, app icon | composited on-device |
+| Search-size legibility check (120×45) | `anthropic/claude-sonnet-5-5` (vision) |
+| Animated title sting with audio | `byteplus/dreamina-seedance-2-0-fast-260128` |
+
+**The one idea:** a single style guide generated first and fed into every model, so the logo, art, icons, sounds and video read as one game rather than eight AI outputs.
+
+Then you download it as a `.zip`, laid out by platform.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+# .env.local
+COMFY_API_KEY=comfyui-...        # platform.comfy.org → API keys
+LAUNCH_PASSCODE=PLAYER1          # optional: gates /api/* for public demos
+npm run dev -- -H 0.0.0.0        # open on your phone on the same Wi-Fi
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It's a mobile-first PWA (Next.js 16), so you can add it to your home screen. Append `?screen=insert` or `?screen=kit` to jump to a screen.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/api/*`: one route per model step (the API key never reaches the browser)
+- `src/lib/useKit.ts`: client pipeline orchestration and video polling
+- `src/lib/compose.ts`: canvas compositing for store sizes
+- `src/components/Crt.tsx`: the CRT TV look
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Steam requires AI-generated content to be disclosed in its content survey. Check Steamworks for the current capsule sizes before you ship.

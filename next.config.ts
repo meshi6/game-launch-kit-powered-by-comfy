@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // let phones on the same Wi-Fi load dev assets
+  allowedDevOrigins: ["172.18.59.189", "*.local"],
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
